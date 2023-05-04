@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/05/2023 13:33:19 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Fornecedor" table="fornecedor" catalog="livraria_trr" optimistic-lock="version">
+        <id name="codFornecedor" type="java.lang.Integer">
+            <column name="codFornecedor" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="endereco" class="entidades.Endereco" fetch="select">
+            <column name="codEndereco" not-null="true" />
+        </many-to-one>
+        <many-to-one name="telefone" class="entidades.Telefone" fetch="select">
+            <column name="codTelefone" not-null="true" />
+        </many-to-one>
+        <property name="nomeFornecedor" type="string">
+            <column name="nomeFornecedor" length="200" />
+        </property>
+        <property name="cnpj" type="java.lang.Integer">
+            <column name="CNPJ" />
+        </property>
+    </class>
+</hibernate-mapping>

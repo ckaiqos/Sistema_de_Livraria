@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/05/2023 13:33:19 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Telefone" table="telefone" catalog="livraria_trr" optimistic-lock="version">
+        <id name="codTelefone" type="java.lang.Integer">
+            <column name="codTelefone" />
+            <generator class="identity" />
+        </id>
+        <property name="numTelefone" type="java.lang.Integer">
+            <column name="numTelefone" />
+        </property>
+        <set name="fornecedors" table="fornecedor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codTelefone" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Fornecedor" />
+        </set>
+        <set name="clientes" table="cliente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codTelefone" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Cliente" />
+        </set>
+    </class>
+</hibernate-mapping>

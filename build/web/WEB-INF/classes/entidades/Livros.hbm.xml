@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04/05/2023 13:33:19 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Livros" table="livros" catalog="livraria_trr" optimistic-lock="version">
+        <id name="codLivro" type="java.lang.Integer">
+            <column name="codLivro" />
+            <generator class="identity" />
+        </id>
+        <property name="nomeLivro" type="string">
+            <column name="nomeLivro" length="200" />
+        </property>
+        <property name="quantidade" type="java.lang.Short">
+            <column name="quantidade" />
+        </property>
+        <property name="preco" type="java.lang.Float">
+            <column name="preco" precision="12" scale="0" />
+        </property>
+        <set name="vendas" table="venda" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codLivro" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Venda" />
+        </set>
+    </class>
+</hibernate-mapping>
