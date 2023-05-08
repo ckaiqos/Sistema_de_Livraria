@@ -15,7 +15,7 @@ import org.hibernate.Transaction;
  * @author windows
  */
 public class Cadastro {
-     static private Session ses = HibernateUtil.getSessionFactory().openSession();
+    static private Session ses = HibernateUtil.getSessionFactory().openSession();
     
     public List consultaTodos(Class classe){return ses.createCriteria(classe).list();}
     

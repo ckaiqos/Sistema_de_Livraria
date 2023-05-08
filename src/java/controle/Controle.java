@@ -46,4 +46,10 @@ public class Controle {
     
     public List consultarFornecedores(){return cad.consultaTodos(Fornecedor.class);}
     
+    public List consultarContas(){return cad.consultaTodos(Conta.class);}
+    
+    public void salvarFornecedor(Conta conta){
+          cad.salvar(conta);
+    }
+    
 }

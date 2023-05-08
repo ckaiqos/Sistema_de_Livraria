@@ -13,9 +13,10 @@
         <link rel="stylesheet" type="text/css" href="index.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <%System.out.println(System.getProperty("java.classpath"));%>
     <body>
         <div class = "menu">
-            <form id="formLogin" action="" method="POST">
+            <form id="formLogin" action="Login" method="POST">
             <table border = 0>
                 
             <tr> 

@@ -5,8 +5,13 @@
  */
 package servlet;
 
+import controle.Controle;
+import entidades.Conta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +22,12 @@ import javax.servlet.http.HttpServletResponse;
  * @author windows
  */
 public class Login extends HttpServlet {
+    private Controle con;
+    @Override
+    public void init() throws ServletException{                             
+            super.init();
+            con = new Controle();    
+                                              }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -70,7 +81,36 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Conta conta = new Conta(); 
+        List<Conta> lista;
+        ServletContext context = this.getServletContext();
+        
+        String login = request.getParameter("login");
+        String senha = request.getParameter("senha");
+        
+        context.setAttribute("listaContas", con.consultarContas());
+        lista = (List) context.getAttribute("listaContas");
+        
+        Iterator<Conta> ite = lista.iterator();
+        
+        while(ite.hasNext()){
+                            conta = ite.next();
+                            if(conta.getLogin().equals(login)){
+                                if((conta.getSenha()).equals(senha)){
+                                PrintWriter writer = response.getWriter();
+                                String htmlResponse = "<html>Login validado!</html>";
+                                writer.println(htmlResponse);
+                               
+                                                                    }
+                                                              }
+                            }
+        
+        
+        
+        conta.setLogin(login);
+        
+        
+        
     }
 
     /**

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/05/2023 08:52:54 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Conta" table="conta" catalog="livraria" optimistic-lock="version">
+        <id name="codConta" type="java.lang.Integer">
+            <column name="codConta" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="acesso" class="entidades.Acesso" fetch="select">
+            <column name="codPermissao" not-null="true" />
+        </many-to-one>
+        <property name="login" type="string">
+            <column name="login" length="80" />
+        </property>
+        <property name="senha" type="string">
+            <column name="senha" length="15" />
+        </property>
+        <set name="clientes" table="cliente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codConta" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Cliente" />
+        </set>
+        <set name="fornecedors" table="fornecedor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codConta" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Fornecedor" />
+        </set>
+    </class>
+</hibernate-mapping>

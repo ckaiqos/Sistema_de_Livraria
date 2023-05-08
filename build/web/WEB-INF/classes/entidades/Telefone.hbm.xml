@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04/05/2023 13:33:19 by Hibernate Tools 4.3.1 -->
+<!-- Generated 08/05/2023 08:52:54 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="entidades.Telefone" table="telefone" catalog="livraria_trr" optimistic-lock="version">
+    <class name="entidades.Telefone" table="telefone" catalog="livraria" optimistic-lock="version">
         <id name="codTelefone" type="java.lang.Integer">
             <column name="codTelefone" />
             <generator class="identity" />
