@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 08/05/2023 08:52:54 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="entidades.Conta" table="conta" catalog="livraria" optimistic-lock="version">
+    <class name="entidades.Conta" table="Conta" catalog="livraria" optimistic-lock="version">
         <id name="codConta" type="java.lang.Integer">
             <column name="codConta" />
             <generator class="identity" />
