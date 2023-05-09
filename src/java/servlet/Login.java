@@ -81,15 +81,17 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String resp = "index.jsp";
         Conta conta = new Conta(); 
         List<Conta> lista;
-        ServletContext context = this.getServletContext();
+        Boolean erroLogin = false;
         
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         
-        context.setAttribute("listaContas", con.consultarContas());
-        lista = (List) context.getAttribute("listaContas");
+        request.getSession().setAttribute("listaContas", con.consultarContas());
+        request.getSession().setAttribute("erroLogin", erroLogin);
+        lista = (List) request.getSession().getAttribute("listaContas");
         
         Iterator<Conta> ite = lista.iterator();
         
@@ -97,17 +99,37 @@ public class Login extends HttpServlet {
                             conta = ite.next();
                             if(conta.getLogin().equals(login)){
                                 if((conta.getSenha()).equals(senha)){
-                                PrintWriter writer = response.getWriter();
-                                String htmlResponse = "<html>Login validado!</html>";
-                                writer.println(htmlResponse);
-                               
+                                    erroLogin = false; 
+                                    request.getSession().setAttribute("erroLogin", erroLogin);
+                                
+                                    if(conta.getAcesso().getCategoria().equals("Administrador")){
+                                        resp = "telaAdministrador.jsp";                                                        
+                                                                                                }
+                                    
+                                    if(conta.getAcesso().getCategoria().equals("Fornecedor"))   {
+                                        resp = "telaFornecedor.jsp";                                                         
+                                                                                                }
+                                    
+                                    if(conta.getAcesso().getCategoria().equals("Cliente"))      {
+                                        resp = "telaCliente.jsp";                                                        
+                                                                                                }
+                                    
+                                    response.sendRedirect(resp);
                                                                     }
+                                
+                                else{
+                                    erroLogin = true; 
+                                    request.getSession().setAttribute("erroLogin", erroLogin);
+                                    resp = "index.jsp";
+                                    response.sendRedirect(resp);
+                                    }
+                                
                                                               }
                             }
         
         
         
-        conta.setLogin(login);
+        
         
         
         

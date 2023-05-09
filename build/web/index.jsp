@@ -5,6 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="javax.servlet.ServletContext"%>
+
+<%
+    request.getSession(); 
+    boolean erroLogin = (Boolean) session.getAttribute("erroLogin");
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,10 +39,28 @@
             </tr> 
             </table>
             <br>
+            
             <tr>
             <button type="submit" id="left">Entrar</button>
             </tr>
+            
+            <p id = "erro">Erro de login! Seu login ou senha estão incorretos. </p>
+            
             </form>
+            
+            <script>
+                
+                if(<%=erroLogin%>){
+                    document.getElementById("erro").style.color = "red";
+                    document.getElementById("myP").style.visibility = "visible";
+                                  }
+                                  
+                else              {
+                    document.getElementById("myP").style.visibility = "hidden";
+                                  }                  
+                                  
+            </script>
+            
         </div>
     </body>
 </html>

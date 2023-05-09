@@ -65,3 +65,11 @@ ALTER TABLE Conta ADD FOREIGN KEY (codPermissao) REFERENCES Acesso(codPermissao)
 INSERT INTO Acesso VALUES (1, "Administrador");
 
 INSERT INTO Conta VALUES (1, "root", "root", 1);
+
+INSERT INTO Acesso VALUES (2, "Fornecedor");
+
+INSERT INTO Acesso VALUES (3, "Cliente");
+
+INSERT INTO Conta VALUES (2, "Livrostop", "topperson", 2);
+
+INSERT INTO Conta VALUES (3, "Jonasvildo", "Vildojonas942", 3);
