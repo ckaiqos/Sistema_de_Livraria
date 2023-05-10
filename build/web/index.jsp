@@ -11,7 +11,6 @@
     /*request.getSession(); 
     boolean erroLogin = (Boolean) session.getAttribute("erroLogin");*/
 %>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,48 +18,143 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="index.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+      /* Estilo para centralizar o painel de login */
+      
+      h1{
+          position: absolute;
+          top: 50px;
+          color: #FFEA00;
+          font-size: 40px;
+          font-family: "Garamond", serif;
+          
+            
+      }
+      
+      
+      body {
+        display: flex;
+        background-color: #202020;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      
+      #formLogin {
+        width: 600px;
+        padding: 20px;
+        background-color: #202020;
+        border: 1px solid grey;
+        border-radius: 5px;
+        text-align: center;
+      }
+      
+      label {
+        
+      }
+      
+      
+      input[type="text"],
+      input[type="password"] {
+        background-color: #B0B0B0;
+        color: #FFEA00;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid black;
+        margin-bottom: 10px;
+        
+      }
+      
+      #idLogin{
+          position: absolute;  
+          right: 555px;
+      }
+      #idSenha{
+          position: absolute;   
+          top: 300px;
+          right: 555px;
+      }
+      
+
+      
+      button {
+        background-color: black;
+        color: #FFEA00;
+        position: absolute;   
+        top: 360px;
+        font: "Times New Roman";
+        right: 615px;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 6px;
+        text-align: center;
+      }
+      #btnEntrar {
+       
+      }
+      #btnEntrar:hover{
+       
+      }
+      
+      #txtLogin{
+          position: relative;
+          top: -5px;
+          color: #FFEA00;
+      }
+      
+      #txtPass{
+          position: relative;
+          top: -5px;
+          color: #FFEA00;
+      }
+      
+      
+    </style>
     </head>
     <body>
+        
+        <h1>BELLES | LETRES</h1>
+        
         <div class = "menu">
             <form id="formLogin" action="Login" method="POST">
             <table border = 0>
                 
-            <tr> 
-             <td class="right">Login:     </td>
-             <td><input id="idLogin" type="text" name="login"/></td>
+            <tr id="idLogin"> 
+             <td id = "txtLogin">Login:     </td>
+             <td id = "inputLogin" ><input type="text" name="login"/></td>
             </tr> 
             
             </table>   
             <table>
-                <br>
-            <tr> 
-             <td class="right">Senha: </td>
-             <td><input id="idSenha" type="password" name="senha"/></td>
+                <br><br><br><br><br>
+            <tr id="idSenha"> 
+             <td id="txtPass">Senha: </td>
+             <td id = "inputPass"><input type="password" name="senha"/></td>
             </tr> 
             </table>
             <br>
             
             <tr>
-            <button type="submit" id="left">Entrar</button>
+            <button type="submit" id="btnEntrar">Entrar</button>
             </tr>
             
             <p id = "erro">Erro de login! Seu login ou senha estão incorretos. </p>
             
             </form>
             
-            <!-- <script>
-                
-               if(erroLoginJava){
+             <script>
                     document.getElementById("erro").style.color = "red";
+                    document.getElementById("erro").style.visibility = "hidden";
+                                  
+                                  
+                /* if(erroLoginJava){              
                     document.getElementById("myP").style.visibility = "visible";
-                                  }
+     }*/
+                                                    
                                   
-                else              {
-                    document.getElementById("myP").style.visibility = "hidden";
-                                  }                  
-                                  
-            </script> -->
+            </script> 
             
         </div>
     </body>
 </html>
+        
