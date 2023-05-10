@@ -8,8 +8,8 @@
 <%@page import="javax.servlet.ServletContext"%>
 
 <%
-    request.getSession(); 
-    boolean erroLogin = (Boolean) session.getAttribute("erroLogin");
+    /*request.getSession(); 
+    boolean erroLogin = (Boolean) session.getAttribute("erroLogin");*/
 %>
 
 <!DOCTYPE html>
@@ -48,9 +48,9 @@
             
             </form>
             
-            <script>
+            <!-- <script>
                 
-                if(<%=erroLogin%>){
+               if(erroLoginJava){
                     document.getElementById("erro").style.color = "red";
                     document.getElementById("myP").style.visibility = "visible";
                                   }
@@ -59,7 +59,7 @@
                     document.getElementById("myP").style.visibility = "hidden";
                                   }                  
                                   
-            </script>
+            </script> -->
             
         </div>
     </body>
