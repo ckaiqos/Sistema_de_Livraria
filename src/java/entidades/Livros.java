@@ -1,5 +1,5 @@
 package entidades;
-// Generated 08/05/2023 08:52:53 by Hibernate Tools 4.3.1
+// Generated 12/05/2023 13:17:11 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,17 +13,37 @@ public class Livros  implements java.io.Serializable {
 
      private Integer codLivro;
      private String nomeLivro;
-     private Short quantidade;
-     private Float preco;
+     private short quantidade;
+     private float preco;
+     private String isbn;
+     private int exemplar;
+     private String genero;
+     private String edicao;
+     private String ano;
+     private String autor;
      private Set vendas = new HashSet(0);
 
     public Livros() {
     }
 
-    public Livros(String nomeLivro, Short quantidade, Float preco, Set vendas) {
+	
+    public Livros(String nomeLivro, short quantidade, float preco, String isbn, int exemplar) {
+        this.nomeLivro = nomeLivro;
+        this.quantidade = quantidade;
+        this.preco = preco;
+        this.isbn = isbn;
+        this.exemplar = exemplar;
+    }
+    public Livros(String nomeLivro, short quantidade, float preco, String isbn, int exemplar, String genero, String edicao, String ano, String autor, Set vendas) {
        this.nomeLivro = nomeLivro;
        this.quantidade = quantidade;
        this.preco = preco;
+       this.isbn = isbn;
+       this.exemplar = exemplar;
+       this.genero = genero;
+       this.edicao = edicao;
+       this.ano = ano;
+       this.autor = autor;
        this.vendas = vendas;
     }
    
@@ -41,19 +61,61 @@ public class Livros  implements java.io.Serializable {
     public void setNomeLivro(String nomeLivro) {
         this.nomeLivro = nomeLivro;
     }
-    public Short getQuantidade() {
+    public short getQuantidade() {
         return this.quantidade;
     }
     
-    public void setQuantidade(Short quantidade) {
+    public void setQuantidade(short quantidade) {
         this.quantidade = quantidade;
     }
-    public Float getPreco() {
+    public float getPreco() {
         return this.preco;
     }
     
-    public void setPreco(Float preco) {
+    public void setPreco(float preco) {
         this.preco = preco;
+    }
+    public String getIsbn() {
+        return this.isbn;
+    }
+    
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+    public int getExemplar() {
+        return this.exemplar;
+    }
+    
+    public void setExemplar(int exemplar) {
+        this.exemplar = exemplar;
+    }
+    public String getGenero() {
+        return this.genero;
+    }
+    
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+    public String getEdicao() {
+        return this.edicao;
+    }
+    
+    public void setEdicao(String edicao) {
+        this.edicao = edicao;
+    }
+    public String getAno() {
+        return this.ano;
+    }
+    
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+    public String getAutor() {
+        return this.autor;
+    }
+    
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
     public Set getVendas() {
         return this.vendas;

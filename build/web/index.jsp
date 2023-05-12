@@ -15,107 +15,8 @@
     <head>
         <title>Login</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="index.css"/>
+        <link rel="stylesheet" type="text/css" href="login.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-      /* Estilo para centralizar o painel de login */
-      
-      h1{
-          position: absolute;
-          top: 50px;
-          color: #FFEA00;
-          font-size: 40px;
-          font-family: "Garamond", serif;
-          
-            
-      }
-      
-      
-      body {
-        display: flex;
-        background-color: #202020;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-      
-      #formLogin {
-        width: 600px;
-        padding: 20px;
-        background-color: #202020;
-        border: 1px solid grey;
-        border-radius: 5px;
-        text-align: center;
-      }
-      
-      label {
-        
-      }
-      
-      
-      input[type="text"],
-      input[type="password"] {
-        background-color: #B0B0B0;
-        color: #FFEA00;
-        padding: 5px;
-        border-radius: 5px;
-        border: 1px solid black;
-        margin-bottom: 10px;
-        
-      }
-      
-      #idLogin{
-          position: absolute;  
-          right: 555px;
-      }
-      #idSenha{
-          position: absolute;   
-          top: 300px;
-          right: 555px;
-      }
-      
-
-      
-      button {
-        background-color: black;
-        color: #FFEA00;
-        position: absolute;   
-        top: 360px;
-        font: "Times New Roman";
-        right: 615px;
-        padding: 10px 20px;
-        cursor: pointer;
-        border-radius: 6px;
-        text-align: center;
-      }
-      #btnEntrar {
-       
-      }
-      
-      #erro{
-          position: relative;   
-          top: -7px;  
-          right: -10px;
-      }
-      
-      #btnEntrar:hover{
-       
-      }
-      
-      #txtLogin{
-          position: relative;
-          top: -5px;
-          color: #FFEA00;
-      }
-      
-      #txtPass{
-          position: relative;
-          top: -5px;
-          color: #FFEA00;
-      }
-      
-      
-    </style>
     </head>
     <body>
         
@@ -144,9 +45,14 @@
             <button type="submit" id="btnEntrar">Entrar</button>
             </tr>
             
+            <!--<a id="btnRegistro" href="registro.jsp" class="button">Cadastro</a>-->
+
+            
             <p id = "erro">Erro de entrada! Seu login ou senha estão incorretos. </p>
             
             </form>
+            
+            <form action="registro.jsp"><input id ="btnRegistro" type="submit" value="Cadastro"/> </form>
             
              <script>
                     document.getElementById("erro").style.color = "red";

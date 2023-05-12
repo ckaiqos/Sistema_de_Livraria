@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 08/05/2023 08:52:54 by Hibernate Tools 4.3.1 -->
+<!-- Generated 12/05/2023 13:17:12 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="entidades.Fornecedor" table="Fornecedor" catalog="livraria" optimistic-lock="version">
         <id name="codFornecedor" type="java.lang.Integer">
@@ -20,8 +20,8 @@
         <property name="nomeFornecedor" type="string">
             <column name="nomeFornecedor" length="200" />
         </property>
-        <property name="cnpj" type="java.lang.Integer">
-            <column name="CNPJ" />
+        <property name="cnpj" type="string">
+            <column name="CNPJ" length="14" />
         </property>
     </class>
 </hibernate-mapping>

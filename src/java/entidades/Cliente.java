@@ -1,5 +1,5 @@
 package entidades;
-// Generated 08/05/2023 08:52:53 by Hibernate Tools 4.3.1
+// Generated 12/05/2023 13:17:11 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -16,6 +16,7 @@ public class Cliente  implements java.io.Serializable {
      private Endereco endereco;
      private Telefone telefone;
      private String nomeCliente;
+     private String cpf;
      private Set vendas = new HashSet(0);
 
     public Cliente() {
@@ -27,11 +28,12 @@ public class Cliente  implements java.io.Serializable {
         this.endereco = endereco;
         this.telefone = telefone;
     }
-    public Cliente(Conta conta, Endereco endereco, Telefone telefone, String nomeCliente, Set vendas) {
+    public Cliente(Conta conta, Endereco endereco, Telefone telefone, String nomeCliente, String cpf, Set vendas) {
        this.conta = conta;
        this.endereco = endereco;
        this.telefone = telefone;
        this.nomeCliente = nomeCliente;
+       this.cpf = cpf;
        this.vendas = vendas;
     }
    
@@ -69,6 +71,13 @@ public class Cliente  implements java.io.Serializable {
     
     public void setNomeCliente(String nomeCliente) {
         this.nomeCliente = nomeCliente;
+    }
+    public String getCpf() {
+        return this.cpf;
+    }
+    
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
     public Set getVendas() {
         return this.vendas;

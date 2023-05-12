@@ -1,5 +1,5 @@
 package entidades;
-// Generated 08/05/2023 08:52:53 by Hibernate Tools 4.3.1
+// Generated 12/05/2023 13:17:11 by Hibernate Tools 4.3.1
 
 
 
@@ -14,7 +14,7 @@ public class Fornecedor  implements java.io.Serializable {
      private Endereco endereco;
      private Telefone telefone;
      private String nomeFornecedor;
-     private Integer cnpj;
+     private String cnpj;
 
     public Fornecedor() {
     }
@@ -25,7 +25,7 @@ public class Fornecedor  implements java.io.Serializable {
         this.endereco = endereco;
         this.telefone = telefone;
     }
-    public Fornecedor(Conta conta, Endereco endereco, Telefone telefone, String nomeFornecedor, Integer cnpj) {
+    public Fornecedor(Conta conta, Endereco endereco, Telefone telefone, String nomeFornecedor, String cnpj) {
        this.conta = conta;
        this.endereco = endereco;
        this.telefone = telefone;
@@ -68,11 +68,11 @@ public class Fornecedor  implements java.io.Serializable {
     public void setNomeFornecedor(String nomeFornecedor) {
         this.nomeFornecedor = nomeFornecedor;
     }
-    public Integer getCnpj() {
+    public String getCnpj() {
         return this.cnpj;
     }
     
-    public void setCnpj(Integer cnpj) {
+    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 08/05/2023 08:52:54 by Hibernate Tools 4.3.1 -->
+<!-- Generated 12/05/2023 13:17:12 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="entidades.Acesso" table="Acesso" catalog="livraria" optimistic-lock="version">
         <id name="codPermissao" type="java.lang.Integer">
@@ -11,7 +11,7 @@
         <property name="categoria" type="string">
             <column name="categoria" length="50" />
         </property>
-        <set name="contas" table="conta" inverse="true" lazy="true" fetch="select">
+        <set name="contas" table="Conta" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="codPermissao" not-null="true" />
             </key>
