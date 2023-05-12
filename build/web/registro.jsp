@@ -14,6 +14,45 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
         <h1>BELLES | LETRES</h1>
+        
+        <div class = "menu">
+            
+            <form id="formLogin" action="Login" method="POST">
+                <table border = 0>
+                    
+            <tr id="tr1"> 
+             <td class ="txt" id = "txtCat">Você é: </td>
+             <td id = "inputCat" >
+                 
+                 <select name="categoria" id="categorias">
+                     
+                 <option value="blank">...</option>    
+                 <option value="cliente">Cliente</option>
+                 <option value="fornecedor">Fornecedor</option>
+                 
+                 
+                </select>
+                 
+             </td>
+            </tr>
+            
+            <tr class = "resto" id = "tr2">
+            <td class = "txt" id = "txtLogin">Teste</td>
+            <td id = "inputLogin" ><input type="text" name="login"/></td>    
+            </tr>
+                    
+                </table>
+            </form>
+            
+            <script>
+              let limit = document.getElementsByClassName("resto").length - 1;
+              for(let i = 0; i < limit; i++){
+              document.getElementsByClassName("resto")[i].style.visibility="hidden";
+          }
+            </script> 
+            
+        </div> 
     </body>
 </html>

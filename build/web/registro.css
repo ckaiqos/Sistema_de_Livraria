@@ -10,7 +10,7 @@ and open the template in the editor.
 
 h1{
           position: absolute;
-          top: 50px;
+          top: -20px;
           color: #FFEA00;
           font-size: 40px;
           font-family: "Garamond", serif;
@@ -25,4 +25,16 @@ h1{
         justify-content: center;
         align-items: center;
         height: 100vh;
+      }
+      
+      .txt{color: #FFEA00;}
+      
+      #tr1{position: relative;
+      right: 310px;
+      top: -200px;}
+      
+      #tr2{
+          position: relative;  
+          right: 307px;    
+          top: -185px;
       }

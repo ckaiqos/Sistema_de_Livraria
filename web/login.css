@@ -10,7 +10,7 @@ and open the template in the editor.
 
  h1{
           position: absolute;
-          top: 50px;
+          top: -20px;
           color: #FFEA00;
           font-size: 40px;
           font-family: "Garamond", serif;
@@ -79,7 +79,7 @@ and open the template in the editor.
       
       #erro{
           position: relative;   
-          top: -7px;  
+          top: 30px;  
           right: -10px;
       }
       
