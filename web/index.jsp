@@ -8,8 +8,7 @@
 <%@page import="javax.servlet.ServletContext"%>
 
 <%
-    /*request.getSession(); 
-    boolean erroLogin = (Boolean) session.getAttribute("erroLogin");*/
+    boolean erroLogin = session.getAttribute("erroLogin") != null? (Boolean) session.getAttribute("erroLogin"): false;
 %>
 <!DOCTYPE html>
 <html>
@@ -92,6 +91,13 @@
       #btnEntrar {
        
       }
+      
+      #erro{
+          position: relative;   
+          top: -7px;  
+          right: -10px;
+      }
+      
       #btnEntrar:hover{
        
       }
@@ -138,7 +144,7 @@
             <button type="submit" id="btnEntrar">Entrar</button>
             </tr>
             
-            <p id = "erro">Erro de login! Seu login ou senha estão incorretos. </p>
+            <p id = "erro">Erro de entrada! Seu login ou senha estão incorretos. </p>
             
             </form>
             
@@ -147,9 +153,10 @@
                     document.getElementById("erro").style.visibility = "hidden";
                                   
                                   
-                /* if(erroLoginJava){              
-                    document.getElementById("myP").style.visibility = "visible";
-     }*/
+                 <%if(erroLogin == true){%>              
+                    document.getElementById("erro").style.visibility = "visible";
+                    <%session.invalidate();%>
+     <%}%>
                                                     
                                   
             </script> 

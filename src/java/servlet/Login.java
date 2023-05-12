@@ -94,8 +94,9 @@ public class Login extends HttpServlet {
         lista = (List) request.getSession().getAttribute("listaContas");
         
         Iterator<Conta> ite = lista.iterator();
-        
+        int i = -1;
         while(ite.hasNext()){
+                            i++;
                             conta = ite.next();
                             if(conta.getLogin().equals(login)){
                                 if((conta.getSenha()).equals(senha)){
@@ -115,9 +116,10 @@ public class Login extends HttpServlet {
                                                                                                 }
                                     
                                     response.sendRedirect(resp);
+                                    break;
                                                                     }
                                 
-                                else{
+                                else if (i == lista.size()-1){
                                     erroLogin = true; 
                                     request.getSession().setAttribute("erroLogin", erroLogin);
                                     resp = "index.jsp";
@@ -125,6 +127,12 @@ public class Login extends HttpServlet {
                                     }
                                 
                                                               }
+                            else if (i == lista.size()-1){
+                                    erroLogin = true; 
+                                    request.getSession().setAttribute("erroLogin", erroLogin);
+                                    resp = "index.jsp";
+                                    response.sendRedirect(resp);
+                                    }
                             }
         
         
