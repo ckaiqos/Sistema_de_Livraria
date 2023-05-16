@@ -39,12 +39,12 @@
             </tr>
             
             <tr class = "resto" id = "tr2CPF">
-            <td class = "txt" id = "txtDoc">CPF: </td>
+            <td class = "txt" id = "txtCPF">CPF: </td>
             <td id = "inputCPF" class = "input"><input type="text" name="CPF"/></td>    
             </tr>
             
             <tr class = "resto" id = "tr2CNPJ">
-            <td class = "txt" id = "txtDoc">CNPJ: </td>
+            <td class = "txt" id = "txtCNPJ">CNPJ: </td>
             <td id = "inputCNPJ" class ="input"><input type="text" name="CNPJ"/></td>    
             </tr>
                     
@@ -52,12 +52,12 @@
             </form>
             
             <script>
-              let limitTxt = document.getElementsByClassName("txt").length;
-              let limitInput = document.getElementsByClassName("input").length;
-              for(let i = 1; i < limitTxt; i++){
+              let limitTxt = document.getElementsByClassName("txt").length-1;
+              let limitInput = document.getElementsByClassName("input").length-1;
+              for(let i = 1; i <= limitTxt; i++){
               document.getElementsByClassName("txt")[i].style.visibility="hidden";
                                                }
-              for(let i = 1; i < limitInput; i++){
+              for(let i = 1; i <= limitInput; i++){
               document.getElementsByClassName("input")[i].style.visibility="hidden";
                                                }
               
@@ -66,20 +66,37 @@
                 if(opcao !== "blank"){
                   
                   if(opcao === "cliente"){ 
-                        console.log(opcao);
-                        for(let i = 0; i < limit; i++){
-                        document.getElementsByClassName("txt")[i].style.visibility="visible";
-                                            }
-                                         }
-                  
+                     document.getElementsByClassName("txt")[1].style.visibility = "visible";  
+                     document.getElementsByClassName("input")[1].style.visibility = "visible";
+                     document.getElementsByClassName("txt")[2].style.visibility = "hidden"; 
+                     document.getElementsByClassName("input")[2].style.visibility = "hidden"; 
+                     
+                     for(let i = 3; i <= limitTxt; i++){ 
+                         document.getElementsByClassName("txt")[i].style.visibility = "visible";
+                                                       }
+                                                       }
+                     
+                     for(let i = 3; i <= limitInput; i++){
+                         document.getElementsByClassName("input")[i].style.visibility = "visible";
+                                                         }
+                     
                   if (opcao === "fornecedor"){  
-                      document.getElementsByClassName("txt")[0].style.visibility="visible";
-                      console.log(opcao);
-                      for(let i = 2; i < limit; i++){
-                        document.getElementsByClassName("txt")[i].style.visibility="visible";
-                                            }
+                      document.getElementsByClassName("txt")[2].style.visibility = "visible";  
+                      document.getElementsByClassName("input")[2].style.visibility = "visible";
+                      document.getElementsByClassName("txt")[1].style.visibility = "hidden"; 
+                      document.getElementsByClassName("input")[1].style.visibility = "hidden"; 
+                      
+                      for(let i = 3; i <= limitTxt; i++){ 
+                         document.getElementsByClassName("txt")[i].style.visibility = "visible";
+                                                       }
+                                                       }
+                     
+                     for(let i = 3; i <= limitInput; i++){
+                         document.getElementsByClassName("input")[i].style.visibility = "visible";
+                                                         }
+                      
                                              }
-                                         }}
+                                         }
               
               
               
