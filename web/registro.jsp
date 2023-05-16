@@ -17,11 +17,13 @@
         
         <h1>BELLES | LETRES</h1>
         
-        <div class = "menu">
+        
             
             <form id="formLogin" action="Login" method="POST">
                 <table border = 0>
+            <div class = "container">
                     
+            <div id =" child1">        
             <tr id="tr1"> 
              <td class ="txt" id = "txtCat">Você é: </td>
              <td id = "inputCat" class = "input">
@@ -37,16 +39,22 @@
                  
              </td>
             </tr>
+            </div>
             
+            <div id = "child2">        
             <tr class = "resto" id = "tr2CPF">
             <td class = "txt" id = "txtCPF">CPF: </td>
             <td id = "inputCPF" class = "input"><input type="text" name="CPF"/></td>    
             </tr>
-            
+            </div> 
+             <div id = "child3">
             <tr class = "resto" id = "tr2CNPJ">
             <td class = "txt" id = "txtCNPJ">CNPJ: </td>
             <td id = "inputCNPJ" class ="input"><input type="text" name="CNPJ"/></td>    
             </tr>
+             </div>   
+                
+            </div> 
                     
                 </table>
             </form>
@@ -96,6 +104,12 @@
                                                          }
                       
                                              }
+                else{for(let i = 1; i <= limitTxt; i++){
+              document.getElementsByClassName("txt")[i].style.visibility="hidden";
+                                               }
+              for(let i = 1; i <= limitInput; i++){
+              document.getElementsByClassName("input")[i].style.visibility="hidden";
+                                               }}
                                          }
               
               

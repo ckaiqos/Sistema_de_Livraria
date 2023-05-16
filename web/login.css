@@ -53,22 +53,17 @@ and open the template in the editor.
       }
       
       #idLogin{
-          position: absolute;  
-          right: 555px;
+          
       }
       #idSenha{
-          position: absolute;   
-          top: 270px;
-          right: 555px;
+          
       }
       
 
       
       #btnEntrar {
        background-color: black;
-        color: #FFEA00;
-        position: absolute;   
-        top: 337px;
+        color: #FFEA00;  
         font: "Times New Roman";
         right: 545px;
         padding: 10px 28px;
@@ -101,9 +96,6 @@ and open the template in the editor.
       
       #btnRegistro{
      
-     position: relative;   
-     top: -72px;       
-     right: -190px;
      color: #FFEA00;
      background-color: black;
      padding: 10px 20px;
