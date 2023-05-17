@@ -62,7 +62,75 @@
             <td id = "inputTele" class = "input"><input type = "text" id= "tele" name = "tele" maxlength="" onkeyup="mascaraTele()"/></td> 
             </tr>
             
+            <tr class = "resto" id = "tr5Bairro">
+            <td class = "txt" id = "txtBairro">Bairro: </td>    
+            <td id = "inputBairro" class = "input"><input type = "text" id = "bairro" name = "bairro"</td>    
             </tr>
+            
+            <tr class="resto" id ="tr6TipoLog">    
+            <td class ="txt" id = "txtTipoLog">Tipo de logradouro: </td>
+            <td id = "inputTiposLog" class = "input">
+                                <select id="tiposLog">
+		                <option value="blank">...</option>
+				<option value="Avenida">Avenida</option>
+				<option value="Rua">Rua</option>
+				<option value="Alameda">Alameda</option>
+				<option value="Estrada">Estrada</option>
+				<option value="Rodovia">Rodovia</option>
+				<option value="Quadra" >Quadra</option>
+				<option value="Travessa">Travessa</option>
+				<option value="Residencial">Residencial</option>
+				<option value="Aeroporto" >Aeroporto</option>
+				<option value="Área">Área</option>
+                                <option value="Campo">Campo</option>
+				<option value="Chácara" >Chácara</option>
+				<option value="Colônia" >Colônia</option>
+				<option value="Condomínio">Condomínio</option>
+				<option value="Conjunto">Conjunto</option>
+				<option value="Distrito">Distrito</option>
+				<option value="Esplanada">Esplanada</option>		
+				<option value="Estação">Estação</option>
+				<option value="Favela">Favela</option>
+				<option value="Fazenda">Fazenda</option>
+				<option value="Feira">Feira</option>
+				<option value="Jardim">Jardim</option>
+				<option value="Ladeira">Ladeira</option>
+				<option value="Lago">Lago</option>
+				<option value="Lagoa">Lagoa</option>
+				<option value="Largo">Largo</option>
+				<option value="Loteamento">Loteamento</option>
+				<option value="Morro">Morro</option>
+				<option value="Núcleo">Núcleo</option>
+				<option value="Parque">Parque</option>
+				<option value="Passarela">Passarela</option>
+				<option value="Pátio">Pátio</option>
+				<option value="Praça">Praça</option>
+				<option value="Recanto">Recanto</option>
+				<option value="Setor">Setor</option>
+				<option value="Sítio">Sítio</option>
+				<option value="Trecho">Trecho</option>
+				<option value="Trevo">Trevo</option>
+				<option value="Vale">Vale</option>
+				<option value="Vereda">Vereda</option>
+				<option value="Via">Via</option>
+				<option value="Viaduto">Viaduto</option>
+				<option value="Viela">Viela</option>
+				<option value="Vila">Vila</option>
+				<option value="outros">Outros</option>
+                                </select>   
+             </td>
+             
+            <tr class = "resto" id = "tr7Logradouro">
+            <td class = "txt" id = "txtLogradouro">Logradouro: </td>    
+            <td id = "inputLog" class = "input"><input type = "text" id = "log" name = "log"</td>    
+            </tr>
+            
+            <tr class = "resto" id = "tr8num">
+            <td class = "txt" id = "txtLogradouro">Logradouro: </td>    
+            <td id = "inputLog" class = "input"><input type = "text" id = "log" name = "log"</td>    
+            </tr>
+            
+            
             
             </tr>
              </div>   
