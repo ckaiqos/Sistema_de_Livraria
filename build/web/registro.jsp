@@ -44,13 +44,13 @@
             <div id = "child2">        
             <tr class = "resto" id = "tr2CPF">
             <td class = "txt" id = "txtCPF">CPF: </td>
-            <td id = "inputCPF" class = "input"><input type="text" name="CPF"/></td>    
+            <td id = "inputCPF" class = "input"><input type="text" name="CPF" id="CPF" maxlength="14" onkeyup="mascaraCPF()"/></td>    
             </tr>
             </div> 
              <div id = "child3">
             <tr class = "resto" id = "tr2CNPJ">
             <td class = "txt" id = "txtCNPJ">CNPJ: </td>
-            <td id = "inputCNPJ" class ="input"><input type="text" name="CNPJ"/></td>    
+            <td id = "inputCNPJ" class ="input"><input type="text" id ="CNPJ" maxlength="18" onkeyup="mascaraCNPJ()" name="CNPJ"/></td>    
             </tr>
              </div>   
                 
@@ -111,6 +111,21 @@
               document.getElementsByClassName("input")[i].style.visibility="hidden";
                                                }}
                                          }
+              function mascaraCPF(){
+                  var CPF = document.getElementById('CPF');
+                  if(CPF.value.length == 3 || CPF.value.length == 7){CPF.value += ".";}
+                  else if (CPF.value.length == 11){CPF.value += "-";}
+                                   }
+              
+              function mascaraCNPJ(){ 
+                  var CNPJ = document.getElementById('CNPJ');
+                  
+                  if (CNPJ.value.length == 2 || CNPJ.value.length == 6){CNPJ.value += ".";}
+                  else if(CNPJ.value.length == 10){CNPJ.value += "/"}
+                  
+                  else if(CNPJ.value.length == 15){CNPJ.value += "-"}
+                  
+                                    }
               
               
               
