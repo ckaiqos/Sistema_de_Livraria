@@ -48,9 +48,22 @@
             </tr>
             </div> 
              <div id = "child3">
+                 
             <tr class = "resto" id = "tr2CNPJ">
             <td class = "txt" id = "txtCNPJ">CNPJ: </td>
-            <td id = "inputCNPJ" class ="input"><input type="text" id ="CNPJ" maxlength="18" onkeyup="mascaraCNPJ()" name="CNPJ"/></td>    
+            <td id = "inputCNPJ" class ="input"><input type="text" id ="CNPJ" maxlength="18" onkeyup="mascaraCNPJ()" name="CNPJ"/></td>  
+            
+            <tr class = "resto" id ="tr3Nome">
+            <td class = "txt" id = "txtNome">Nome: </td> 
+            <td id = "inputNome" class = "input"><input type="text" id = "nome" name = "nome"/></td>
+            
+            <tr class = "resto" id = "tr4Tele">
+            <td class = "txt" id = "txtTele">Telefone: </td>   
+            <td id = "inputTele" class = "input"><input type = "text" id= "tele" name = "tele" maxlength="" onkeyup="mascaraTele()"/></td> 
+            </tr>
+            
+            </tr>
+            
             </tr>
              </div>   
                 
@@ -82,6 +95,7 @@
                      for(let i = 3; i <= limitTxt; i++){ 
                          document.getElementsByClassName("txt")[i].style.visibility = "visible";
                                                        }
+                     document.getElementById("txtNome").innerHTML = "Nome: ";
                                                        }
                      
                      for(let i = 3; i <= limitInput; i++){
@@ -97,11 +111,14 @@
                       for(let i = 3; i <= limitTxt; i++){ 
                          document.getElementsByClassName("txt")[i].style.visibility = "visible";
                                                        }
-                                                       }
+                                                       
                      
                      for(let i = 3; i <= limitInput; i++){
                          document.getElementsByClassName("input")[i].style.visibility = "visible";
-                                                         }
+                                                         } 
+                    
+                    document.getElementById("txtNome").innerHTML = "Razão social: ";
+                }
                       
                                              }
                 else{for(let i = 1; i <= limitTxt; i++){
@@ -126,6 +143,13 @@
                   else if(CNPJ.value.length == 15){CNPJ.value += "-"}
                   
                                     }
+               
+               function mascaraTele(){ 
+                   var tele = document.getElementById('tele');
+                   if(tele.value.length == 1){tele.value = "(" + tele.value;} //replace seria bom
+                   if(tele.value.length == 3){tele.value += ") ";}
+                   if(tele.value.length ==10){tele.value += "-";}
+                                     }
               
               
               
