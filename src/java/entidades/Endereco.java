@@ -1,5 +1,5 @@
 package entidades;
-// Generated 12/05/2023 13:17:11 by Hibernate Tools 4.3.1
+// Generated 17/05/2023 09:47:32 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,6 +12,7 @@ public class Endereco  implements java.io.Serializable {
 
 
      private Integer codEndereco;
+     private String bairro;
      private String logradouro;
      private Integer numero;
      private Integer cep;
@@ -23,7 +24,13 @@ public class Endereco  implements java.io.Serializable {
     public Endereco() {
     }
 
-    public Endereco(String logradouro, Integer numero, Integer cep, String cidade, String uf, Set fornecedors, Set clientes) {
+	
+    public Endereco(String bairro, String logradouro) {
+        this.bairro = bairro;
+        this.logradouro = logradouro;
+    }
+    public Endereco(String bairro, String logradouro, Integer numero, Integer cep, String cidade, String uf, Set fornecedors, Set clientes) {
+       this.bairro = bairro;
        this.logradouro = logradouro;
        this.numero = numero;
        this.cep = cep;
@@ -39,6 +46,13 @@ public class Endereco  implements java.io.Serializable {
     
     public void setCodEndereco(Integer codEndereco) {
         this.codEndereco = codEndereco;
+    }
+    public String getBairro() {
+        return this.bairro;
+    }
+    
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
     public String getLogradouro() {
         return this.logradouro;
