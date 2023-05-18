@@ -1,24 +1,14 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 12/05/2023, 09:40:25
-    Author     : windows
-*/
-
- h1{
+h1{
           position: absolute;
-          top: -20px;
+          top: 50px;
           color: #FFEA00;
           font-size: 40px;
           font-family: "Garamond", serif;
-          
-            
+
+
       }
-      
-      
+
+
       body {
         display: flex;
         background-color: #202020;
@@ -26,7 +16,7 @@ and open the template in the editor.
         align-items: center;
         height: 100vh;
       }
-      
+
       #formLogin {
         width: 600px;
         padding: 20px;
@@ -35,12 +25,12 @@ and open the template in the editor.
         border-radius: 5px;
         text-align: center;
       }
-      
+
       label {
-        
+
       }
-      
-      
+
+
       input[type="text"],
       input[type="password"] {
         background-color: #B0B0B0;
@@ -49,21 +39,26 @@ and open the template in the editor.
         border-radius: 5px;
         border: 1px solid black;
         margin-bottom: 10px;
-        
+
       }
-      
+
       #idLogin{
-          
+          position: absolute;  
+          right: 555px;
       }
       #idSenha{
-          
+          position: absolute;   
+          top: 270px;
+          right: 555px;
       }
-      
 
-      
+
+
       #btnEntrar {
        background-color: black;
-        color: #FFEA00;  
+        color: #FFEA00;
+        position: absolute;   
+        top: 337px;
         font: "Times New Roman";
         right: 545px;
         padding: 10px 28px;
@@ -71,31 +66,34 @@ and open the template in the editor.
         border-radius: 6px;
         text-align: center;
       }
-      
+
       #erro{
           position: relative;   
-          top: 30px;  
+          top: -7px;  
           right: -10px;
       }
-      
+
       #btnEntrar:hover{
-       
+
       }
-      
+
       #txtLogin{
           position: relative;
           top: -5px;
           color: #FFEA00;
       }
-      
+
       #txtPass{
           position: relative;
           top: -5px;
           color: #FFEA00;
       }
-      
+
       #btnRegistro{
-     
+
+     position: relative;   
+     top: -72px;       
+     right: -190px;
      color: #FFEA00;
      background-color: black;
      padding: 10px 20px;
@@ -103,5 +101,3 @@ and open the template in the editor.
      border-radius: 6px;
      text-align: center;
       }
-      
-      

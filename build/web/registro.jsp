@@ -19,7 +19,7 @@
         
         
             
-            <form id="formLogin" action="Login" method="POST">
+            <form id="formLogin" action="Registro" method="POST">
                 <table border = 0>
             <div class = "container">
                     
@@ -59,7 +59,7 @@
             
             <tr class = "resto" id = "tr4Tele">
             <td class = "txt" id = "txtTele">Telefone: </td>   
-            <td id = "inputTele" class = "input"><input type = "text" id= "tele" name = "tele" maxlength="" onkeyup="mascaraTele()"/></td> 
+            <td id = "inputTele" class = "input"><input type = "text" id= "tele" name = "tele" maxlength="15" onkeyup="mascaraTele()"/></td> 
             </tr>
             
             <tr class = "resto" id = "tr5UF">
@@ -144,8 +144,8 @@
             </tr>
             
             <tr class = "resto" id = "tr10num">
-            <td class = "txt" id = "txtLogradouro">Número: </td>    
-            <td id = "inputLog" class = "input"><input type = "text" id = "log" name = "num"</td>    
+            <td class = "txt" id = "txtNum">Número: </td>    
+            <td id = "inputNum" class = "input"><input type = "text" id = "num" name = "num"</td>    
             </tr>
             
             <tr class = "resto" id = "tr11CEP">
@@ -153,17 +153,77 @@
             <td id = "inputCEP" class = "input"><input type = "text" id = "CEP" maxlength ="9"  name = "CEP" onkeyup="mascaraCEP()"</td>    
             </tr> 
             
-            
-            
+            <tr class = "resto" id = "tr12login">
+            <td class = "txt" id = "txtLogin">Login: </td>    
+            <td id = "inputLogin" class = "input"><input type = "text" id = "login" name = "login"</td>    
             </tr>
-             </div>   
-                
-            </div> 
+            
+            <tr class = "resto" id = "tr13senha">
+            <td class = "txt" id = "txtSenha">Senha: </td>    
+            <td id = "inputSenha" class = "input"><input type = "password" id = "senha" name = "senha"</td>    
+            </tr> 
+            
+            <tr class = "resto" id = "tr14botao">
+            <td id = "inputCadastrar" class = "input"><button type="submit" id="btnCadastrar">Cadastrar</button></td>
+            </tr>
+            
+             
                     
                 </table>
             </form>
             
             <script>
+              
+              function colocaEstados() {
+	fetch('https://geoapibrasil.herokuapp.com/v1/states')
+		.then(res => res.json())
+		.then(states => {
+			
+			states.map(state => {
+				
+				const option = document.createElement('option');
+		
+				option.setAttribute('value', state.state);
+				option.textContent = state.stateName;
+		
+				selectEstados.appendChild(option);
+			});
+		})
+}
+
+
+function colocaCidades() {
+	selectEstados.addEventListener('change', () => {
+		
+		let nosSelectCidades = selectCidades.childNodes;
+		
+		[...nosSelectCidades].map(node => node.remove());
+		
+		let estado = selectEstados.options[selectEstados.selectedIndex].value;
+		
+		fetch(`https://geoapibrasil.herokuapp.com/v1/cities?state=${estado}`)
+			.then(res => res.json())
+			.then(cities => {
+				
+				selectCidades.removeAttribute('disabled');
+			
+				cities.map(city => {
+				
+					const option = document.createElement('option');
+
+					option.textContent = city.name;
+
+					selectCidades.appendChild(option);
+				});
+			})
+	});
+}
+              const selectEstados = document.querySelector('#states');
+              const selectCidades = document.querySelector('#cities');  
+              
+              colocaEstados();
+              
+              
               let limitTxt = document.getElementsByClassName("txt").length-1;
               let limitInput = document.getElementsByClassName("input").length-1;
               for(let i = 1; i <= limitTxt; i++){
