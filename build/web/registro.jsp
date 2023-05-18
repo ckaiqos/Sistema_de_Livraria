@@ -62,12 +62,30 @@
             <td id = "inputTele" class = "input"><input type = "text" id= "tele" name = "tele" maxlength="" onkeyup="mascaraTele()"/></td> 
             </tr>
             
-            <tr class = "resto" id = "tr5Bairro">
+            <tr class = "resto" id = "tr5UF">
+            <td class = "txt"  id = "txtUF">Estado: </td>  
+            <td id = "inputUF" class = "input">
+            <select id = "estados">
+            <option value = "blank">...</option>
+            </select>
+            </td> 
+            </tr>
+            
+            <tr class = "resto" id = "tr6cidade">
+            <td class = "txt"  id = "txtCidade">Cidade: </td>  
+            <td id = "inputCidade" class = "input">
+            <select id = "cidades" disabled>
+            <option value = "">Selecione um estado...</option>
+            </select>
+            </td> 
+            </tr>
+            
+            <tr class = "resto" id = "tr7Bairro">
             <td class = "txt" id = "txtBairro">Bairro: </td>    
             <td id = "inputBairro" class = "input"><input type = "text" id = "bairro" name = "bairro"</td>    
             </tr>
             
-            <tr class="resto" id ="tr6TipoLog">    
+            <tr class="resto" id ="tr8TipoLog">    
             <td class ="txt" id = "txtTipoLog">Tipo de logradouro: </td>
             <td id = "inputTiposLog" class = "input">
                                 <select id="tiposLog">
@@ -120,15 +138,20 @@
                                 </select>   
              </td>
              
-            <tr class = "resto" id = "tr7Logradouro">
+            <tr class = "resto" id = "tr9Logradouro">
             <td class = "txt" id = "txtLogradouro">Logradouro: </td>    
             <td id = "inputLog" class = "input"><input type = "text" id = "log" name = "log"</td>    
             </tr>
             
-            <tr class = "resto" id = "tr8num">
-            <td class = "txt" id = "txtLogradouro">Logradouro: </td>    
-            <td id = "inputLog" class = "input"><input type = "text" id = "log" name = "log"</td>    
+            <tr class = "resto" id = "tr10num">
+            <td class = "txt" id = "txtLogradouro">Número: </td>    
+            <td id = "inputLog" class = "input"><input type = "text" id = "log" name = "num"</td>    
             </tr>
+            
+            <tr class = "resto" id = "tr11CEP">
+            <td class = "txt" id = "txtCEP">CEP: </td>    
+            <td id = "inputCEP" class = "input"><input type = "text" id = "CEP" maxlength ="9"  name = "CEP" onkeyup="mascaraCEP()"</td>    
+            </tr> 
             
             
             
@@ -149,6 +172,11 @@
               for(let i = 1; i <= limitInput; i++){
               document.getElementsByClassName("input")[i].style.visibility="hidden";
                                                }
+                                               
+              function mascaraCEP(){
+                   var CEP = document.getElementById('CEP');
+                   if(CEP.value.length == 5){CEP.value += "-";}
+                                    }
               
               function habilitar() {
                 var opcao = document.getElementById("categorias").value;
