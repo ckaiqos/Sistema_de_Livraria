@@ -10,6 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="registro.css"/>
         <title>JSP Page</title>
     </head>
@@ -19,8 +22,9 @@
         
         
             
-            <form id="formLogin" action="Registro" method="POST">
+            <form id="formCadastro" action="Registro" method="POST">
                 <table border = 0>
+                    <tbody id = "tbody"> 
             <div class = "container">
                     
             <div id =" child1">        
@@ -39,23 +43,7 @@
                  
              </td>
             </tr>
-            </div>
-            
-            <div id = "child2">        
-            <tr class = "resto" id = "tr2CPF">
-            <td class = "txt" id = "txtCPF">CPF: </td>
-            <td id = "inputCPF" class = "input"><input type="text" name="CPF" id="CPF" maxlength="14" onkeyup="mascaraCPF()"/></td>    
-            </tr>
             </div> 
-             <div id = "child3">
-                 
-            <tr class = "resto" id = "tr2CNPJ">
-            <td class = "txt" id = "txtCNPJ">CNPJ: </td>
-            <td id = "inputCNPJ" class ="input"><input type="text" id ="CNPJ" maxlength="18" onkeyup="mascaraCNPJ()" name="CNPJ"/></td>  
-            
-            <tr class = "resto" id ="tr3Nome">
-            <td class = "txt" id = "txtNome">Nome: </td> 
-            <td id = "inputNome" class = "input"><input type="text" id = "nome" name = "nome"/></td>
             
             <tr class = "resto" id = "tr4Tele">
             <td class = "txt" id = "txtTele">Telefone: </td>   
@@ -65,7 +53,7 @@
             <tr class = "resto" id = "tr5UF">
             <td class = "txt"  id = "txtUF">Estado: </td>  
             <td id = "inputUF" class = "input">
-            <select id = "estados">
+            <select id = "estados" name = "UF">
             <option value = "blank">...</option>
             </select>
             </td> 
@@ -74,7 +62,7 @@
             <tr class = "resto" id = "tr6cidade">
             <td class = "txt"  id = "txtCidade">Cidade: </td>  
             <td id = "inputCidade" class = "input">
-            <select id = "cidades" disabled>
+            <select id = "cidades" name = "cidade" disabled>
             <option value = "">Selecione um estado...</option>
             </select>
             </td> 
@@ -88,7 +76,7 @@
             <tr class="resto" id ="tr8TipoLog">    
             <td class ="txt" id = "txtTipoLog">Tipo de logradouro: </td>
             <td id = "inputTiposLog" class = "input">
-                                <select id="tiposLog">
+                                <select id="tiposLog" name = "tipoLog">
 		                <option value="blank">...</option>
 				<option value="Avenida">Avenida</option>
 				<option value="Rua">Rua</option>
@@ -168,64 +156,55 @@
             </tr>
             
              
-                    
+             </tbody>    
                 </table>
             </form>
-            
+        </div>
             <script>
-              
-              function colocaEstados() {
-	fetch('https://geoapibrasil.herokuapp.com/v1/states')
-		.then(res => res.json())
-		.then(states => {
-			
-			states.map(state => {
-				
-				const option = document.createElement('option');
-		
-				option.setAttribute('value', state.state);
-				option.textContent = state.stateName;
-		
-				selectEstados.appendChild(option);
-			});
-		})
-}
-
-
-function colocaCidades() {
-	selectEstados.addEventListener('change', () => {
-		
-		let nosSelectCidades = selectCidades.childNodes;
-		
-		[...nosSelectCidades].map(node => node.remove());
-		
-		let estado = selectEstados.options[selectEstados.selectedIndex].value;
-		
-		fetch(`https://geoapibrasil.herokuapp.com/v1/cities?state=${estado}`)
-			.then(res => res.json())
-			.then(cities => {
-				
-				selectCidades.removeAttribute('disabled');
-			
-				cities.map(city => {
-				
-					const option = document.createElement('option');
-
-					option.textContent = city.name;
-
-					selectCidades.appendChild(option);
-				});
-			})
-	});
-}
-              const selectEstados = document.querySelector('#states');
-              const selectCidades = document.querySelector('#cities');  
-              
-              colocaEstados();
-              
+              //adiciona estados e cidades (ainda só fiz estados)  
+              $(document).ready(function(){    
+                  loader('estados');
+                  function loader(id, cidadeid){ 
+                      var html = '';  
+                      $.getJSON('https://gist.githubusercontent.com/letanure/3012978/raw/6938daa8ba69bcafa89a8c719690225641e39586/estados-cidades.json', 
+                      function(data){  
+                          if(id === 'estados' && cidadeid == null){  
+                              if (typeof window === "object") {console.log('a');}
+                              for(var i=0; i < data.estados.length; i++){ 
+                                  html += '<option value="' + data.estados[i].sigla + '">' + data.estados[i].nome + '</option>';
+                                                                        } 
+                                                                    }
+                          else{
+                              for(var i = 0; i < data.estados.length; i++){
+                                  if(data.estados[i].sigla == cidadeid){   
+                                      document.getElementById('cidades').disabled = false;
+                                      for (var j = 0; j < data.estados[i].cidades.length; j++){
+                                          html += '<option value='+ data.estados[i].sigla +'>'+data.estados[i].cidades[j]+ '</option>';
+                                      }
+                                  }
+                              }
+                          }
+                           $('#'+id).append(html);       
+                                             });
+                                    }
+                              
+                      $(document).on('change', '#estados', function(){
+                              var cidadeid = $(this).val();
+                              console.log(cidadeid);
+                              if(cidadeid != null){
+				loader('cidades', cidadeid);
+			}
+                          }
+                                  );
+                                          });
+                     
+                      
+                                               
+                          
               
               let limitTxt = document.getElementsByClassName("txt").length-1;
               let limitInput = document.getElementsByClassName("input").length-1;
+              
               for(let i = 1; i <= limitTxt; i++){
               document.getElementsByClassName("txt")[i].style.visibility="hidden";
                                                }
@@ -243,41 +222,122 @@ function colocaCidades() {
                 if(opcao !== "blank"){
                   
                   if(opcao === "cliente"){ 
-                     document.getElementsByClassName("txt")[1].style.visibility = "visible";  
-                     document.getElementsByClassName("input")[1].style.visibility = "visible";
-                     document.getElementsByClassName("txt")[2].style.visibility = "hidden"; 
-                     document.getElementsByClassName("input")[2].style.visibility = "hidden"; 
+                      
+              //verifica se linhas de RS/CNPJ ou nome/CPF existem e as remove se existirem        
+              if(document.getElementById("tr2") !== null){
+                  console.log(document.getElementById("tr2"));
+                  var trr1 = document.getElementById("tr2");
+                  var trr2 = document.getElementById("tr3");
+                  console.log(trr1); 
+                  trr1.remove();
+                  trr2.remove();
+              }
+              
+             
+              //adiciona linhas de nome e CPF 
+              var table = document.getElementById("tbody");
+              var tr = table.insertRow(1);
+              var tr2 = table.insertRow(2);
+              
+              var td1 = tr.insertCell(0);
+              var td2 = tr.insertCell(1);
+              var td3 = tr2.insertCell(0);  
+              var td4 = tr2.insertCell(1);
+              
+              
+              
+              td1.outerHTML = '<td style ="color: #FFEA00" id = "txtNome" class = "txt">Nome: </td>';
+              td2.innerHTML += '<input type="text" name="nome" id="nome" class = "input"/>';
+              td3.outerHTML = '<td style ="color: #FFEA00" id = "txtCPF" class = "txt">CPF: </td>';
+              td4.innerHTML += '<input type="text" name="CPF" id="CPF" maxlength="14" class = "input" onkeyup="mascaraCPF()"/>';
+              
+              tr.setAttribute("id", "tr2");
+              tr2.setAttribute("id", "tr3");
+              
+              limitInput = document.getElementsByClassName("input").length-1;
+	      limitTxt = document.getElementsByClassName("txt").length-1;
+              
+              for(let i = 1; i <= limitTxt; i++){
+              
+              document.getElementsByClassName("txt")[i].style.visibility="hidden";
+                                               }
+              for(let i = 1; i <= limitInput; i++){
+              document.getElementsByClassName("input")[i].style.visibility="hidden";
+                                                  }
                      
-                     for(let i = 3; i <= limitTxt; i++){ 
+                     for(let i = 1; i <= limitTxt; i++){ 
                          document.getElementsByClassName("txt")[i].style.visibility = "visible";
                                                        }
-                     document.getElementById("txtNome").innerHTML = "Nome: ";
+                    
                                                        }
                      
-                     for(let i = 3; i <= limitInput; i++){
+                     for(let i = 1; i <= limitInput; i++){
                          document.getElementsByClassName("input")[i].style.visibility = "visible";
                                                          }
                      
                   if (opcao === "fornecedor"){  
-                      document.getElementsByClassName("txt")[2].style.visibility = "visible";  
-                      document.getElementsByClassName("input")[2].style.visibility = "visible";
-                      document.getElementsByClassName("txt")[1].style.visibility = "hidden"; 
-                      document.getElementsByClassName("input")[1].style.visibility = "hidden"; 
+              //verifica se linhas de RS/CNPJ ou nome/CPF existem e as remove se existirem
+              if(document.getElementById("tr2") !== null){
+                  var trr1 = document.getElementById("tr2");
+                  var trr2 = document.getElementById("tr3"); 
+                  trr1.remove();
+                  trr2.remove();
+              }
+              //adiciona linhas de razão social e CNPJ
+              
+              var table = document.getElementById("tbody");
+              var tr = table.insertRow(1);
+              var tr2 = table.insertRow(2);
+              
+              var td1 = tr.insertCell(0);
+              var td2 = tr.insertCell(1);
+              var td3 = tr2.insertCell(0);  
+              var td4 = tr2.insertCell(1);
+              
+              td1.outerHTML = '<td style ="color: #FFEA00" id = "txtRazSoc" class = "txt">Razão social: </td>';
+              td2.innerHTML += '<input type="text" name="razSoc" id="razSoc" class = "txt"/>';
+              td3.outerHTML = '<td style ="color: #FFEA00" id = "txtCNPJ" class = "txt">CNPJ: </td>';
+              td4.innerHTML += '<input type="text" name="CNPJ" id="CNPJ" maxlength = "18" onkeyup="mascaraCNPJ()" class "input"/>';
+              
+              tr.setAttribute("id", "tr2");
+              tr2.setAttribute("id", "tr3");
+              
+              limitInput = document.getElementsByClassName("input").length-1;
+	      limitTxt = document.getElementsByClassName("txt").length-1;
+              
+              for(let i = 1; i <= limitTxt; i++){
+              
+              document.getElementsByClassName("txt")[i].style.visibility="hidden";
+                                               }
+              for(let i = 1; i <= limitInput; i++){
+              document.getElementsByClassName("input")[i].style.visibility="hidden";
+                                                  }
                       
-                      for(let i = 3; i <= limitTxt; i++){ 
+                      for(let i = 1; i <= limitTxt; i++){ 
                          document.getElementsByClassName("txt")[i].style.visibility = "visible";
                                                        }
                                                        
                      
-                     for(let i = 3; i <= limitInput; i++){
+                     for(let i = 1; i <= limitInput; i++){
                          document.getElementsByClassName("input")[i].style.visibility = "visible";
                                                          } 
                     
-                    document.getElementById("txtNome").innerHTML = "Razão social: ";
+                    
                 }
                       
                                              }
-                else{for(let i = 1; i <= limitTxt; i++){
+                else{
+                    
+                    if(document.getElementById("tr2") !== null){
+                  var trr1 = document.getElementById("tr2");
+                  var trr2 = document.getElementById("tr3"); 
+                  trr1.remove();
+                  trr2.remove();
+              }
+              limitInput = document.getElementsByClassName("input").length-1;
+	      limitTxt = document.getElementsByClassName("txt").length-1;
+              
+                    for(let i = 1; i <= limitTxt; i++){
               document.getElementsByClassName("txt")[i].style.visibility="hidden";
                                                }
               for(let i = 1; i <= limitInput; i++){
@@ -285,10 +345,45 @@ function colocaCidades() {
                                                }}
                                          }
               function mascaraCPF(){
+                  var i = 0;
                   var CPF = document.getElementById('CPF');
-                  if(CPF.value.length == 3 || CPF.value.length == 7){CPF.value += ".";}
-                  else if (CPF.value.length == 11){CPF.value += "-";}
-                                   }
+                  if((CPF.value.length == 3 && CPF.value[4] === undefined) || (CPF.value.length == 7 && CPF.value[8] === undefined)){CPF.value += ".";}
+                  else if (CPF.value.length == 11 && CPF.value[12] === undefined){CPF.value += "-";}
+                  else if((CPF.value[4] !== "." && CPF.value[4] !== undefined) || (CPF.value[8] !== "." && CPF.value[8] !== undefined) || (CPF.value[12] !== "-" && CPF.value[12] !== undefined)){ 
+                        console.log(CPF.value);
+                        var newCPF = CPF.value;
+                        
+                        newCPF = CPF.value.slice(0, -1);
+                        console.log(newCPF);
+                        
+                        var arr = newCPF.split("");
+                        console.log(arr);
+                        
+                        arr = arr.splice(3, 0, '.');  
+                        
+                        //console.log(arr);
+                        
+                        /*for(i = 0; i <= 2; i++){
+                            newCPF += CPF.value[i];
+                                               }
+                        newCPF += '.';    
+                        
+                        for(i = 5; i <= 7; i++){
+                            newCPF += CPF.value[i];
+                                               }
+                        newCPF += '.';  
+                        
+                        for(i = 9; i <= 11; i++){
+                            newCPF += CPF.value[i];
+                                                }
+                        newCPF += '-';
+                        
+                        for(i = 13; i <= 14; i++){
+                            newCPF += CPF.value[i];
+                                                }
+                        console.log(newCPF);*/
+                }
+              }
               
               function mascaraCNPJ(){ 
                   var CNPJ = document.getElementById('CNPJ');
@@ -314,7 +409,5 @@ function colocaCidades() {
               
           
             </script> 
-            
-        </div> 
     </body>
 </html>

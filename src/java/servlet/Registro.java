@@ -87,8 +87,21 @@ public class Registro extends HttpServlet {
         Conta conta = new Conta(); 
         List<Conta> lista;
         
-        String login = request.getParameter("novoLogin");
-        String senha = request.getParameter("novaSenha");
+        String categoria = request.getParameter("categoria");
+        String nome = request.getParameter("nome");
+        String razSoc = request.getParameter("razSoc");
+        String CPF = request.getParameter("CPF");
+        String CNPJ = request.getParameter("CNPJ");
+        String tele = request.getParameter("tele"); 
+        String UF = request.getParameter("UF");
+        String cidade = request.getParameter("cidade");
+        String bairro = request.getParameter("bairro");
+        String tipoLog = request.getParameter("tipoLog");   
+        String log = request.getParameter("log"); 
+        String num = request.getParameter("num");
+        String CEP = request.getParameter("CEP");
+        String login = request.getParameter("login");
+        String senha = request.getParameter("senha");
         
         
         request.getSession().setAttribute("listaContas", con.consultarContas());
