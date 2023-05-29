@@ -6,7 +6,7 @@
 package servlet;
 
 import controle.Controle;
-import entidades.Conta;
+import entidades.*;
 import java.util.Iterator;
 import java.util.List;
 import java.io.IOException;
@@ -83,7 +83,10 @@ public class Registro extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String erroRegistro;  
+        String erroRegistro = "";  
+        String resp = "registro.jsp";
+        Endereco endereco = new Endereco();    
+        Telefone telefone = new Telefone();
         Conta conta = new Conta(); 
         List<Conta> lista;
         
@@ -118,17 +121,19 @@ public class Registro extends HttpServlet {
                             conta = ite.next();
                             if(conta.getLogin().equals(login)){
                                 
-                                erroRegistro = "Essa conta já existe! Use outro nome de usuário.";
+                                erroRegistro += "Essa conta já existe! Use outro nome de usuário.";
                                 request.getSession().setAttribute("erroRegistro", erroRegistro);
-                                //redirect
+                                resp = "registro.jsp";
+                                response.sendRedirect(resp);
                                 break;
                                 
                                                               }}
         i=0; 
         
         if(senha.length() < 10){
-            erroRegistro = "Essa senha é muito curta! Use pelo menos 10 caracteres";
+            erroRegistro += "Essa senha é muito curta! Use pelo menos 10 caracteres";
             request.getSession().setAttribute("erroRegistro", erroRegistro);
+            
                               }
         
         Pattern maisculas = Pattern.compile("[A-Z]");
@@ -165,6 +170,19 @@ public class Registro extends HttpServlet {
             erroRegistro = "A senha deve ser diferente do login!";
             request.getSession().setAttribute("erroRegistro", erroRegistro);                   
                                }
+        
+        if("cliente".equals(categoria)){
+            Cliente cliente = new Cliente();
+            
+            
+            
+                                       } 
+        
+        else if("fornecedor".equals(categoria)){ 
+            Fornecedor fornecedor = new Fornecedor();
+            
+            
+                                               }   
         
     }
 

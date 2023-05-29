@@ -5,6 +5,11 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    String erroRegistro = session.getAttribute("erroRegistro") != null? (String) session.getAttribute("erroRegistro"): null;
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -159,9 +164,11 @@
              </tbody>    
                 </table>
             </form>
+        <p id = "erro" style = "color: red"> </p>
         </div>
             <script>
               //adiciona estados e cidades (ainda só fiz estados)  
+              console.log("<%=erroRegistro%>");
               $(document).ready(function(){    
                   loader('estados');
                   function loader(id, cidadeid){ 
@@ -198,8 +205,14 @@
                                   );
                                           });
                      
-                      
-                                               
+              document.getElementById("erro").style.visibility = "hidden";        
+              <%if(erroRegistro != null){%>              
+                    
+                    document.getElementById("erro").style.visibility = "visible";
+                    console.log("<%=erroRegistro%>");
+                    document.getElementById("erro").innerHTML = "<%=erroRegistro%>";
+                    <%session.invalidate();%>
+     <%}%>                                 
                           
               
               let limitTxt = document.getElementsByClassName("txt").length-1;
@@ -295,7 +308,7 @@
               var td4 = tr2.insertCell(1);
               
               td1.outerHTML = '<td style ="color: #FFEA00" id = "txtRazSoc" class = "txt">Razão social: </td>';
-              td2.innerHTML += '<input type="text" name="razSoc" id="razSoc" class = "txt"/>';
+              td2.innerHTML += '<input type="text" name="razSoc" id="razSoc" class =/>';
               td3.outerHTML = '<td style ="color: #FFEA00" id = "txtCNPJ" class = "txt">CNPJ: </td>';
               td4.innerHTML += '<input type="text" name="CNPJ" id="CNPJ" maxlength = "18" onkeyup="mascaraCNPJ()" class "input"/>';
               
@@ -400,6 +413,16 @@
                    if(tele.value.length == 1){tele.value = "(" + tele.value;} //replace seria bom
                    if(tele.value.length == 3){tele.value += ") ";}
                    if(tele.value.length ==10){tele.value += "-";}
+                   
+                   if (tele.value.length == 15) {
+                       var telefoneNum = $('#tele').val();
+                       
+                       telefoneNum = telefoneNum.replace(/\D/g,''); 
+                       
+                       console.log(telefoneNum);
+                       
+                                                }
+                   
                                      }
               
               
