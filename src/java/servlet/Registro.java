@@ -97,7 +97,7 @@ public class Registro extends HttpServlet {
         String CNPJ = request.getParameter("CNPJ");
         String tele = request.getParameter("tele"); 
         String UF = request.getParameter("UF");
-        String cidade = (String) request.getAttribute("cidade");
+        String cidade = (String) request.getSession().getAttribute("cidade");
         String bairro = request.getParameter("bairro");
         String tipoLog = request.getParameter("tipoLog");   
         String log = request.getParameter("log"); 
