@@ -157,6 +157,7 @@
             </tr> 
             
             <tr class = "resto" id = "tr14botao">
+            <td id = "txtCadastrar" class = "txt">Cadastro: </td>
             <td id = "inputCadastrar" class = "input"><button type="submit" id="btnCadastrar">Cadastrar</button></td>
             </tr>
             
@@ -173,6 +174,7 @@
                   loader('estados');
                   function loader(id, cidadeid){ 
                       var html = '';  
+                      var cidade = '';
                       $.getJSON('https://gist.githubusercontent.com/letanure/3012978/raw/6938daa8ba69bcafa89a8c719690225641e39586/estados-cidades.json', 
                       function(data){  
                           if(id === 'estados' && cidadeid == null){  
@@ -187,6 +189,7 @@
                                       document.getElementById('cidades').disabled = false;
                                       for (var j = 0; j < data.estados[i].cidades.length; j++){
                                           html += '<option value='+ data.estados[i].sigla +'>'+data.estados[i].cidades[j]+ '</option>';
+                                          console.log(html);
                                       }
                                   }
                               }
@@ -203,6 +206,11 @@
 			}
                           }
                                   );
+                          
+                       $(document).on('change', '#cidades', function(){
+                           cidade = $("#cidades option:selected").text();
+                           $.post("ajaxCidade", {city: cidade}, function(){console.log("Sucesso");});
+                       })
                                           });
                      
               document.getElementById("erro").style.visibility = "hidden";        

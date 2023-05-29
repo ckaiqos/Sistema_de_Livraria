@@ -97,7 +97,7 @@ public class Registro extends HttpServlet {
         String CNPJ = request.getParameter("CNPJ");
         String tele = request.getParameter("tele"); 
         String UF = request.getParameter("UF");
-        String cidade = request.getParameter("cidade");
+        String cidade = (String) request.getAttribute("cidade");
         String bairro = request.getParameter("bairro");
         String tipoLog = request.getParameter("tipoLog");   
         String log = request.getParameter("log"); 
@@ -150,7 +150,6 @@ public class Registro extends HttpServlet {
         if (temMaisculas.find() == false){
             erroRegistro = "Essa senha não possuí caracteres maiúsculos! Formule outra que possua.";
             request.getSession().setAttribute("erroRegistro", erroRegistro);
-            //redirect
                                          }
         
         if (temMinusculas.find() == false){
