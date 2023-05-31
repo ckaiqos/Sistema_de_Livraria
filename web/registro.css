@@ -26,7 +26,7 @@ h1{
       input[type="password"] {
         background-color: #B0B0B0;
         color: #FFEA00;
-        padding: 5px;
+        padding: 2px;
         border-radius: 5px;
         border: 1px solid black;
         margin-bottom: 10px;
@@ -35,7 +35,7 @@ h1{
       
       #erro{align-self: center;
             position: relative;  
-            top: 5em;
+            top: 2em;
       font-size:18px;}
       
       body {

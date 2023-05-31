@@ -106,6 +106,10 @@ public class Registro extends HttpServlet {
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         
+        if(categoria.equals("cliente")){CPF = CPF.replaceAll("[^\\d]", "");}
+        else if(categoria.equals("fornecedor")){CNPJ = CNPJ.replaceAll("[^\\d]", "");}
+        tele = tele.replaceAll("[^\\d]", "");
+        CEP = CEP.replaceAll("[^\\d]", ""); 
         
         request.getSession().setAttribute("listaContas", con.consultarContas());
         lista = (List) request.getSession().getAttribute("listaContas");
@@ -121,18 +125,20 @@ public class Registro extends HttpServlet {
                             conta = ite.next();
                             if(conta.getLogin().equals(login)){
                                 
-                                erroRegistro += "Essa conta já existe! Use outro nome de usuário.";
+                                erroRegistro += "ERRO: Essa conta já existe! Use outro nome de usuário.";
                                 request.getSession().setAttribute("erroRegistro", erroRegistro);
                                 resp = "registro.jsp";
                                 response.sendRedirect(resp);
-                                break;
-                                
                                                               }}
         i=0; 
         
         if(senha.length() < 10){
-            erroRegistro += "Essa senha é muito curta! Use pelo menos 10 caracteres";
-            request.getSession().setAttribute("erroRegistro", erroRegistro);
+            if(erroRegistro.isEmpty()){
+                erroRegistro += "ERRO: Essa senha é muito curta! Use pelo menos 10 caracteres.";
+                request.getSession().setAttribute("erroRegistro", erroRegistro);
+                resp = "registro.jsp";
+                response.sendRedirect(resp);
+                                      }
             
                               }
         
@@ -148,26 +154,36 @@ public class Registro extends HttpServlet {
         Matcher temEspeciais = especiais.matcher(senha);
         
         if (temMaisculas.find() == false){
-            erroRegistro = "Essa senha não possuí caracteres maiúsculos! Formule outra que possua.";
+            if(erroRegistro.isEmpty()){erroRegistro = "ERRO: Essa senha não possuí caracteres maiúsculos! Formule outra que possua.";
             request.getSession().setAttribute("erroRegistro", erroRegistro);
+            resp = "registro.jsp";
+            response.sendRedirect(resp);}
                                          }
         
         if (temMinusculas.find() == false){
-            erroRegistro = "Essa senha não possuí caracteres minúsculos! Formule outra que possua.";
+            if(erroRegistro.isEmpty()){erroRegistro = "ERRO: Essa senha não possuí caracteres minúsculos! Formule outra que possua.";
             request.getSession().setAttribute("erroRegistro", erroRegistro);
+            resp = "registro.jsp";
+            response.sendRedirect(resp);}
                                           }
         if (temNumeros.find() == false){
-            erroRegistro = "Essa senha não possuí caracteres numéricos! Formule outra que possua.";
+            if(erroRegistro.isEmpty()){erroRegistro = "ERRO: Essa senha não possuí caracteres numéricos! Formule outra que possua.";
             request.getSession().setAttribute("erroRegistro", erroRegistro);
+            resp = "registro.jsp";
+            response.sendRedirect(resp);}
                                        }
         if (temEspeciais.find() == false){
-            erroRegistro = "Essa senha não possuí caracteres numéricos! Formule outra que possua.";
+            if(erroRegistro.isEmpty()){erroRegistro = "ERRO: Essa senha não possuí caracteres especiais! Formule outra que possua.";
             request.getSession().setAttribute("erroRegistro", erroRegistro);
+            resp = "registro.jsp";
+            response.sendRedirect(resp);}
                                          }
         
         if(senha.equals(login)){
-            erroRegistro = "A senha deve ser diferente do login!";
-            request.getSession().setAttribute("erroRegistro", erroRegistro);                   
+            if(erroRegistro.isEmpty()){erroRegistro = "ERRO: A senha deve ser diferente do login!";
+            request.getSession().setAttribute("erroRegistro", erroRegistro);
+            resp = "registro.jsp";
+            response.sendRedirect(resp);}                   
                                }
         
         if("cliente".equals(categoria)){
