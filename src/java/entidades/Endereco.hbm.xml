@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 29/05/2023 09:15:35 by Hibernate Tools 4.3.1 -->
+<!-- Generated 31/05/2023 07:50:29 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="entidades.Endereco" table="Endereco" catalog="livraria" optimistic-lock="version">
         <id name="codEndereco" type="java.lang.Integer">
@@ -14,11 +14,11 @@
         <property name="logradouro" type="string">
             <column name="logradouro" length="200" not-null="true" />
         </property>
-        <property name="numero" type="java.lang.Integer">
-            <column name="numero" />
+        <property name="numero" type="string">
+            <column name="numero" length="9" />
         </property>
-        <property name="cep" type="java.lang.Integer">
-            <column name="CEP" />
+        <property name="cep" type="string">
+            <column name="CEP" length="8" />
         </property>
         <property name="cidade" type="string">
             <column name="Cidade" length="100" />
