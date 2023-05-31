@@ -5,12 +5,18 @@
  */
 package servlet;
 
+import controle.Cadastro;
 import controle.Controle;
 import entidades.*;
 import java.util.Iterator;
 import java.util.List;
 import java.io.IOException;
+import java.math.BigInteger;  
+import java.security.MessageDigest;  
+import java.security.NoSuchAlgorithmException;  
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.ServletException;
@@ -25,10 +31,12 @@ import javax.servlet.http.HttpServletResponse;
 public class Registro extends HttpServlet {
     
     private Controle con;
+    private Cadastro cad;
     @Override
     public void init() throws ServletException{                             
             super.init();
             con = new Controle();    
+            cad = new Cadastro(); 
                                               }
 
     /**
@@ -130,7 +138,7 @@ public class Registro extends HttpServlet {
                                 resp = "registro.jsp";
                                 response.sendRedirect(resp);
                                                               }}
-        i=0; 
+         
         
         if(senha.length() < 10){
             if(erroRegistro.isEmpty()){
@@ -186,17 +194,61 @@ public class Registro extends HttpServlet {
             response.sendRedirect(resp);}                   
                                }
         
-        if("cliente".equals(categoria)){
+        if("cliente".equals(categoria) && erroRegistro.isEmpty()){
+            Acesso acesso = cad.getAcesso(3);
+            
+            try {
+                MessageDigest md = MessageDigest.getInstance("MD5");
+                byte[] messageDigest = md.digest(senha.getBytes());  
+                BigInteger no = new BigInteger(1, messageDigest);  
+                senha = no.toString(16);  
+                while (senha.length() < 32){  
+                   senha = "0" + senha;  
+                                           }  
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             Cliente cliente = new Cliente();
             
+            cliente.setNomeCliente(nome);
+            cliente.setCpf(CPF);
+            
+            conta.setLogin(login);
+            conta.setSenha(senha);
+            conta.setAcesso(acesso);
             
             
+            endereco.setUf(UF);
+            endereco.setCidade(cidade);
+            endereco.setBairro(bairro);
+            endereco.setCep(CEP);
+            endereco.setLogradouro(login);
+            endereco.setNumero(num);
+            
+            telefone.setNumTelefone(tele);
                                        } 
         
-        else if("fornecedor".equals(categoria)){ 
+        else if("fornecedor".equals(categoria) && erroRegistro.isEmpty()){ 
+            Acesso acesso = cad.getAcesso(2);
+            
             Fornecedor fornecedor = new Fornecedor();
             
+            fornecedor.setNomeFornecedor(razSoc);
+            fornecedor.setCnpj(CNPJ);
             
+            conta.setLogin(login);
+            conta.setSenha(senha);
+            conta.setAcesso(acesso);
+            
+            endereco.setUf(UF);
+            endereco.setCidade(cidade);
+            endereco.setBairro(bairro);
+            endereco.setCep(CEP);
+            endereco.setLogradouro(login);
+            endereco.setNumero(num);
+            
+            telefone.setNumTelefone(tele);
                                                }   
         
     }

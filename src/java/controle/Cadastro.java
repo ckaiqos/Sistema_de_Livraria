@@ -49,6 +49,15 @@ public class Cadastro {
         return endereco;
     }
     
+    public Acesso getAcesso(int id){
+        
+        Acesso acesso = null;
+        Transaction tr = ses.beginTransaction();
+        acesso = (Acesso) ses.get(Acesso.class, id);
+        
+        return acesso;
+    }
+    
     public Telefone getTelefone(int id){
         
         Telefone telefone = null;
