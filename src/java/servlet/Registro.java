@@ -96,7 +96,7 @@ public class Registro extends HttpServlet {
         Endereco endereco = new Endereco();    
         Telefone telefone = new Telefone();
         Conta conta = new Conta(); 
-        List<Conta> lista;
+        List<Conta> listaContas;
         
         String categoria = request.getParameter("categoria");
         String nome = request.getParameter("nome");
@@ -114,16 +114,18 @@ public class Registro extends HttpServlet {
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         
+        log = tipoLog + ' ' + log;
+        
         if(categoria.equals("cliente")){CPF = CPF.replaceAll("[^\\d]", "");}
         else if(categoria.equals("fornecedor")){CNPJ = CNPJ.replaceAll("[^\\d]", "");}
         tele = tele.replaceAll("[^\\d]", "");
         CEP = CEP.replaceAll("[^\\d]", ""); 
         
         request.getSession().setAttribute("listaContas", con.consultarContas());
-        lista = (List) request.getSession().getAttribute("listaContas");
+        listaContas = (List) request.getSession().getAttribute("listaContas");
         
         
-        Iterator<Conta> ite = lista.iterator();
+        Iterator<Conta> ite = listaContas.iterator();
         int i = -1;
         
         
@@ -196,6 +198,10 @@ public class Registro extends HttpServlet {
         
         if("cliente".equals(categoria) && erroRegistro.isEmpty()){
             Acesso acesso = cad.getAcesso(3);
+            Iterator<Conta> iterate = acesso.getContas().iterator();
+             while(iterate.hasNext()){
+                System.out.print(iterate.next().getLogin());
+                                     }
             
             try {
                 MessageDigest md = MessageDigest.getInstance("MD5");
@@ -213,20 +219,30 @@ public class Registro extends HttpServlet {
             
             cliente.setNomeCliente(nome);
             cliente.setCpf(CPF);
-            
-            conta.setLogin(login);
-            conta.setSenha(senha);
-            conta.setAcesso(acesso);
+            Conta registro = new Conta();
+            listaContas.add(registro);
+            registro.setLogin(login);
+            registro.setSenha(senha);
+            registro.setAcesso(acesso);
             
             
             endereco.setUf(UF);
             endereco.setCidade(cidade);
             endereco.setBairro(bairro);
             endereco.setCep(CEP);
-            endereco.setLogradouro(login); //e
+            endereco.setLogradouro(log);
             endereco.setNumero(num);
             
             telefone.setNumTelefone(tele);
+            
+            con.salvarConta(registro);
+            
+            String sucesso = "Você criou uma conta com sucesso!"; 
+            
+            request.getSession().setAttribute("sucessoRegistro", sucesso);
+            resp = "registro.jsp";
+            response.sendRedirect(resp);
+            
                                        } 
         
         else if("fornecedor".equals(categoria) && erroRegistro.isEmpty()){ 

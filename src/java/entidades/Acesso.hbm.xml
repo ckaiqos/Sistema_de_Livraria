@@ -13,7 +13,7 @@
         </property>
         <set name="contas" table="Conta" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="codPermissao" not-null="true" />
+                <column name="codPermissao" not-null="true" /> <!-- Coluna na tabela CONTA -->
             </key>
             <one-to-many class="entidades.Conta" />
         </set>

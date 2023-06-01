@@ -23,7 +23,9 @@ public class Cadastro {
             Transaction tr= ses.beginTransaction();
             ses.saveOrUpdate(obj);
             tr.commit();
-                                  } //a
+            ses.close(); 
+            
+                                  }
     
     public void delete(Object obj){
         Transaction tr= ses.beginTransaction();
@@ -34,7 +36,6 @@ public class Cadastro {
     public Livros getLivro(int id){
         
         Livros livro = null;
-        Transaction tr = ses.beginTransaction();
         livro = (Livros) ses.get(Livros.class, id);
         
         return livro;
@@ -43,7 +44,6 @@ public class Cadastro {
     public Endereco getEndereco(int id){
         
         Endereco endereco = null;
-        Transaction tr = ses.beginTransaction();
         endereco = (Endereco) ses.get(Endereco.class, id);
         
         return endereco;
@@ -52,7 +52,6 @@ public class Cadastro {
     public Acesso getAcesso(int id){
         
         Acesso acesso = null;
-        Transaction tr = ses.beginTransaction();
         acesso = (Acesso) ses.get(Acesso.class, id);
         
         return acesso;
@@ -61,7 +60,6 @@ public class Cadastro {
     public Telefone getTelefone(int id){
         
         Telefone telefone = null;
-        Transaction tr = ses.beginTransaction();
         telefone = (Telefone) ses.get(Telefone.class, id);
         
         return telefone;
@@ -70,7 +68,6 @@ public class Cadastro {
     public Cliente getCliente(int id){
         
         Cliente cliente = null;
-        Transaction tr = ses.beginTransaction();
         cliente = (Cliente) ses.get(Cliente.class, id);
         
         return cliente;
@@ -79,7 +76,6 @@ public class Cadastro {
     public Fornecedor getFornecedor(int id){
         
         Fornecedor fornecedor = null;
-        Transaction tr = ses.beginTransaction();
         fornecedor = (Fornecedor) ses.get(Fornecedor.class, id);
         
         return fornecedor;
@@ -88,7 +84,6 @@ public class Cadastro {
     public Venda getVenda(int id){
         
         Venda Venda = null;
-        Transaction tr = ses.beginTransaction();
         Venda = (Venda) ses.get(Venda.class, id);
         
         return Venda;

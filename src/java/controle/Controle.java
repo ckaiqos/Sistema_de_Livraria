@@ -40,11 +40,17 @@ public class Controle {
     
     public List consultarVendas(){return cad.consultaTodos(Venda.class);}
     
+    public List consultarClientes(){return cad.consultaTodos(Cliente.class);}
+    
+    public void salvarCliente(Cliente cliente){cad.salvar(cliente);}
+    
+    public void salvarConta(Conta conta){cad.salvar(conta);}
+    
      public void salvarFornecedor(Fornecedor fornecedor){
           cad.salvar(fornecedor);
     }
     
-    public List consultarFornecedores(){return cad.consultaTodos(Fornecedor.class);} //d
+    public List consultarFornecedores(){return cad.consultaTodos(Fornecedor.class);}
     
     public List consultarContas(){return cad.consultaTodos(Conta.class);}
     

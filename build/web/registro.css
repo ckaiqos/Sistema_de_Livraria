@@ -7,7 +7,7 @@ and open the template in the editor.
     Created on : 12/05/2023, 09:42:56
     Author     : windows
 */
-/*4*/
+
 h1{
           top: -20px;
           color: #FFEA00;
@@ -33,7 +33,7 @@ h1{
 
       }
       
-      #erro{align-self: center; 
+      #status{align-self: center;
             position: relative;  
             top: 2em;
       font-size:18px;}

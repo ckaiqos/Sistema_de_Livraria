@@ -8,6 +8,7 @@
 
 <%
     String erroRegistro = session.getAttribute("erroRegistro") != null? (String) session.getAttribute("erroRegistro"): null;
+    String sucessoRegistro = session.getAttribute("sucessoRegistro") != null? (String) session.getAttribute("sucessoRegistro"): null;
 %>
 
 <!DOCTYPE html>
@@ -165,7 +166,7 @@
              </tbody>    
                 </table>
             </form>
-        <p id = "erro" style = "color: red"> </p>
+        <p id = "status"> </p>
         </div>
             <script>
               //adiciona estados e cidades (ainda só fiz estados)  
@@ -213,18 +214,26 @@
                        })
                                           });
                      
-              document.getElementById("erro").style.visibility = "hidden";        
+              document.getElementById("status").style.visibility = "hidden";        
               <%if(erroRegistro != null){%>              
                     
-                    document.getElementById("erro").style.visibility = "visible";
+                    document.getElementById("status").style.visibility = "visible";
                     console.log("<%=erroRegistro%>");
-                    document.getElementById("erro").innerHTML = "<%=erroRegistro%>";
+                    document.getElementById("status").innerHTML = "<%=erroRegistro%>";
+                    document.getElementById("status").style.color = "red";
                     <%session.invalidate();%>
-     <%}%>                                 
+     <%}%>    
+             <%if(sucessoRegistro != null){%> 
+                    document.getElementById("status").style.visibility = "visible";
+                    console.log("<%=sucessoRegistro%>");
+                    document.getElementById("status").innerHTML = "<%=sucessoRegistro%>";
+                    document.getElementById("status").style.color = "blue";
+                    <%session.invalidate();%>
+             <%}%>
                           
               
               let limitTxt = document.getElementsByClassName("txt").length-1;
-              let limitInput = document.getElementsByClassName("input").length-1; //2
+              let limitInput = document.getElementsByClassName("input").length-1;
               
               for(let i = 1; i <= limitTxt; i++){
               document.getElementsByClassName("txt")[i].style.visibility="hidden";
