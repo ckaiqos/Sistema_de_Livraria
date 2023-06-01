@@ -23,7 +23,7 @@ public class Cadastro {
             Transaction tr= ses.beginTransaction();
             ses.saveOrUpdate(obj);
             tr.commit();
-                                  }
+                                  } //a
     
     public void delete(Object obj){
         Transaction tr= ses.beginTransaction();

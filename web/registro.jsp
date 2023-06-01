@@ -224,7 +224,7 @@
                           
               
               let limitTxt = document.getElementsByClassName("txt").length-1;
-              let limitInput = document.getElementsByClassName("input").length-1;
+              let limitInput = document.getElementsByClassName("input").length-1; //2
               
               for(let i = 1; i <= limitTxt; i++){
               document.getElementsByClassName("txt")[i].style.visibility="hidden";

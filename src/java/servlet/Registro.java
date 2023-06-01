@@ -223,7 +223,7 @@ public class Registro extends HttpServlet {
             endereco.setCidade(cidade);
             endereco.setBairro(bairro);
             endereco.setCep(CEP);
-            endereco.setLogradouro(login);
+            endereco.setLogradouro(login); //e
             endereco.setNumero(num);
             
             telefone.setNumTelefone(tele);
