@@ -15,26 +15,29 @@ import org.hibernate.Transaction;
  * @author windows
  */
 public class Cadastro {
-    static private Session ses = HibernateUtil.getSessionFactory().openSession();
     
-    public List consultaTodos(Class classe){return ses.createCriteria(classe).list();}
+    
+    public List consultaTodos(Class classe){
+        Session ses = HibernateUtil.getSessionFactory().openSession();
+        return ses.createCriteria(classe).list();}
     
     public void salvar(Object obj){
+            Session ses = HibernateUtil.getSessionFactory().openSession();
             Transaction tr= ses.beginTransaction();
             ses.saveOrUpdate(obj);
             tr.commit();
-            ses.close(); 
             
                                   }
     
     public void delete(Object obj){
+        Session ses = HibernateUtil.getSessionFactory().openSession();
         Transaction tr= ses.beginTransaction();
         if (obj != null){ses.delete(obj);}
         tr.commit();
                                   }
     
     public Livros getLivro(int id){
-        
+        Session ses = HibernateUtil.getSessionFactory().openSession();
         Livros livro = null;
         livro = (Livros) ses.get(Livros.class, id);
         
@@ -43,6 +46,7 @@ public class Cadastro {
     
     public Endereco getEndereco(int id){
         
+        Session ses = HibernateUtil.getSessionFactory().openSession();
         Endereco endereco = null;
         endereco = (Endereco) ses.get(Endereco.class, id);
         
@@ -51,6 +55,7 @@ public class Cadastro {
     
     public Acesso getAcesso(int id){
         
+        Session ses = HibernateUtil.getSessionFactory().openSession();
         Acesso acesso = null;
         acesso = (Acesso) ses.get(Acesso.class, id);
         
@@ -58,7 +63,7 @@ public class Cadastro {
     }
     
     public Telefone getTelefone(int id){
-        
+        Session ses = HibernateUtil.getSessionFactory().openSession();
         Telefone telefone = null;
         telefone = (Telefone) ses.get(Telefone.class, id);
         
@@ -67,6 +72,7 @@ public class Cadastro {
     
     public Cliente getCliente(int id){
         
+        Session ses = HibernateUtil.getSessionFactory().openSession();
         Cliente cliente = null;
         cliente = (Cliente) ses.get(Cliente.class, id);
         
@@ -75,6 +81,7 @@ public class Cadastro {
     
     public Fornecedor getFornecedor(int id){
         
+        Session ses = HibernateUtil.getSessionFactory().openSession();
         Fornecedor fornecedor = null;
         fornecedor = (Fornecedor) ses.get(Fornecedor.class, id);
         
@@ -82,7 +89,7 @@ public class Cadastro {
     }
     
     public Venda getVenda(int id){
-        
+        Session ses = HibernateUtil.getSessionFactory().openSession();
         Venda Venda = null;
         Venda = (Venda) ses.get(Venda.class, id);
         

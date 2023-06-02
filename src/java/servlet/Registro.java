@@ -220,7 +220,7 @@ public class Registro extends HttpServlet {
             cliente.setNomeCliente(nome);
             cliente.setCpf(CPF);
             Conta registro = new Conta();
-            listaContas.add(registro);
+            //listaContas.add(registro);
             registro.setLogin(login);
             registro.setSenha(senha);
             registro.setAcesso(acesso);
@@ -236,6 +236,17 @@ public class Registro extends HttpServlet {
             telefone.setNumTelefone(tele);
             
             con.salvarConta(registro);
+            con.salvarEndereco(endereco);
+            con.salvarTelefone(telefone);
+            
+            cliente.setConta(registro);
+            cliente.setEndereco(endereco);
+            cliente.setTelefone(telefone);
+            
+            System.out.println(conta.getCodConta());
+            System.out.println(conta.getLogin());
+            
+            con.salvarCliente(cliente);
             
             String sucesso = "Você criou uma conta com sucesso!"; 
             
