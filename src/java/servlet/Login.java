@@ -9,8 +9,13 @@ import controle.Controle;
 import entidades.Conta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -88,6 +93,18 @@ public class Login extends HttpServlet {
         
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
+        
+        try {
+                MessageDigest md = MessageDigest.getInstance("MD5");
+                byte[] messageDigest = md.digest(senha.getBytes());  
+                BigInteger no = new BigInteger(1, messageDigest);  
+                senha = no.toString(16);  
+                while (senha.length() < 32){  
+                   senha = "0" + senha;  
+                                           }  
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
         request.getSession().setAttribute("listaContas", con.consultarContas());
         request.getSession().setAttribute("erroLogin", erroLogin);

@@ -29,12 +29,12 @@ FOREIGN KEY (codLivro) REFERENCES Livros(codLivro));
 
 INSERT INTO Acesso VALUES (1, "Administrador");
 
-INSERT INTO Conta VALUES (1, "root", "root", 1);
-
 INSERT INTO Acesso VALUES (2, "Fornecedor");
 
 INSERT INTO Acesso VALUES (3, "Cliente");
 
-INSERT INTO Conta VALUES (2, "Livrostop", "topperson", 2);
+INSERT INTO Conta VALUES (1, "root", "63a9f0ea7bb98050796b649e85481845", 1); --senha root
 
-INSERT INTO Conta VALUES (3, "Jonasvildo", "Vildojonas942", 3);
+INSERT INTO Conta VALUES (2, "Livrostop", "63776d3025a03bfbd84ffa5cb95b2ef1", 2); --senha topperson 
+
+INSERT INTO Conta VALUES (3, "Jonasvildo", "b4d30f584bac853f3a4de309d346d16a", 3); --senha Vildojonas942
