@@ -260,13 +260,26 @@ public class Registro extends HttpServlet {
             Acesso acesso = cad.getAcesso(2);
             
             Fornecedor fornecedor = new Fornecedor();
+            Conta registro = new Conta();
+            
+            try {
+                MessageDigest md = MessageDigest.getInstance("MD5");
+                byte[] messageDigest = md.digest(senha.getBytes());  
+                BigInteger no = new BigInteger(1, messageDigest);  
+                senha = no.toString(16);  
+                while (senha.length() < 32){  
+                   senha = "0" + senha;  
+                                           }  
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            registro.setLogin(login);
+            registro.setSenha(senha);
+            registro.setAcesso(acesso);
             
             fornecedor.setNomeFornecedor(razSoc);
             fornecedor.setCnpj(CNPJ);
-            
-            conta.setLogin(login);
-            conta.setSenha(senha);
-            conta.setAcesso(acesso);
             
             endereco.setUf(UF);
             endereco.setCidade(cidade);
@@ -276,6 +289,23 @@ public class Registro extends HttpServlet {
             endereco.setNumero(num);
             
             telefone.setNumTelefone(tele);
+            
+            con.salvarConta(registro);
+            con.salvarEndereco(endereco);
+            con.salvarTelefone(telefone);
+            
+            fornecedor.setConta(registro);
+            fornecedor.setEndereco(endereco);
+            fornecedor.setTelefone(telefone);
+            
+            con.salvarFornecedor(fornecedor);
+            
+            String sucesso = "Você criou uma conta com sucesso!"; 
+            
+            request.getSession().setAttribute("sucessoRegistro", sucesso);
+            resp = "registro.jsp";
+            response.sendRedirect(resp);
+            
                                                }   
         
     }

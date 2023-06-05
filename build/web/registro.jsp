@@ -226,8 +226,16 @@
              <%if(sucessoRegistro != null){%> 
                     document.getElementById("status").style.visibility = "visible";
                     console.log("<%=sucessoRegistro%>");
-                    document.getElementById("status").innerHTML = "<%=sucessoRegistro%>";
-                    document.getElementById("status").style.color = "blue";
+                    document.getElementById("status").innerHTML = "<%=sucessoRegistro%> ";
+                    var a = document.createElement('a');
+                    var linkText = document.createTextNode("Clique aqui para voltar à tela de log-in.");
+                    a.appendChild(linkText);
+                    a.href = "index.jsp";
+                    $(a).attr("id", "link");
+                    $(a).attr("text-decoration", "underline");
+                    a.style.color = "green";
+                    document.getElementById("status").appendChild(a);
+                    document.getElementById("status").style.color = "green";
                     <%session.invalidate();%>
              <%}%>
                           

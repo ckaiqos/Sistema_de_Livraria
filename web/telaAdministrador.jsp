@@ -9,9 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="telaAdministrador.css"/>
+        <title>Admin</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>BELLES | LETRES</h1>
     </body>
 </html>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 02/06/2023 10:53:47 by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/06/2023 11:40:56 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="entidades.Livros" table="Livros" catalog="livraria" optimistic-lock="version">
         <id name="codLivro" type="java.lang.Integer">
@@ -18,16 +18,16 @@
             <column name="preco" precision="12" scale="0" not-null="true" />
         </property>
         <property name="isbn" type="string">
-            <column name="isbn" length="15" not-null="true" />
+            <column name="isbn" length="13" not-null="true" />
         </property>
         <property name="exemplar" type="int">
             <column name="exemplar" not-null="true" />
         </property>
         <property name="genero" type="string">
-            <column name="genero" length="30" />
+            <column name="genero" length="80" />
         </property>
         <property name="edicao" type="string">
-            <column name="edicao" length="3" />
+            <column name="edicao" length="80" />
         </property>
         <property name="ano" type="string">
             <column name="ano" length="4" />

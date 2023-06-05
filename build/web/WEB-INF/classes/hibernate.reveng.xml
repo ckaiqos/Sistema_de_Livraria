@@ -42,11 +42,11 @@ Contributor(s):
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="livraria"/>
   <table-filter match-name="telefone"/>
-  <table-filter match-name="acesso"/>
+  <table-filter match-name="venda"/>
   <table-filter match-name="livros"/>
+  <table-filter match-name="acesso"/>
   <table-filter match-name="fornecedor"/>
   <table-filter match-name="cliente"/>
-  <table-filter match-name="venda"/>
   <table-filter match-name="endereco"/>
   <table-filter match-name="conta"/>
 </hibernate-reverse-engineering>

@@ -6,7 +6,7 @@
 package servlet;
 
 import controle.Controle;
-import entidades.Conta;
+import entidades.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigInteger;
@@ -103,7 +103,7 @@ public class Login extends HttpServlet {
                    senha = "0" + senha;  
                                            }  
             } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
         
         request.getSession().setAttribute("listaContas", con.consultarContas());
@@ -112,6 +112,7 @@ public class Login extends HttpServlet {
         
         Iterator<Conta> ite = lista.iterator();
         int i = -1;
+        int z = -1;
         while(ite.hasNext()){
                             i++;
                             conta = ite.next();
@@ -125,11 +126,41 @@ public class Login extends HttpServlet {
                                                                                                 }
                                     
                                     if(conta.getAcesso().getCategoria().equals("Fornecedor"))   {
-                                        resp = "telaFornecedor.jsp";                                                         
+                                        
+                                        List<Fornecedor> listaf = con.consultarFornecedores();
+                                        Fornecedor fornecedor = new Fornecedor();
+                                        resp = "telaFornecedor.jsp";        
+                                        request.getSession().setAttribute("contaLogada", conta);
+                                        Iterator<Fornecedor> itef = listaf.iterator();
+                                        
+                                        while(itef.hasNext()){ 
+                                            z++;    
+                                            fornecedor = itef.next(); 
+                                            
+                                            if(fornecedor.getConta().getCodConta() == conta.getCodConta()){
+                                                request.getSession().setAttribute("fornecedorLogado", fornecedor);                              
+                                                                              }
+                                            
+                                                            }
+                                        
                                                                                                 }
                                     
                                     if(conta.getAcesso().getCategoria().equals("Cliente"))      {
-                                        resp = "telaCliente.jsp";                                                        
+                                        List<Cliente> listac = con.consultarClientes();
+                                        Cliente cliente = new Cliente();
+                                        resp = "telaCliente.jsp";    
+                                        request.getSession().setAttribute("contaLogada", conta);
+                                        Iterator<Cliente> itec = listac.iterator();
+                                        
+                                        while(itec.hasNext()){ 
+                                            z++;    
+                                            cliente = itec.next(); 
+                                            
+                                            if(cliente.getConta().getCodConta() == conta.getCodConta()){
+                                                request.getSession().setAttribute("clienteLogado", cliente);                              
+                                                                              }
+                                                             }
+                                        
                                                                                                 }
                                     
                                     response.sendRedirect(resp);
