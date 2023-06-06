@@ -1,5 +1,5 @@
 package entidades;
-// Generated 05/06/2023 11:40:55 by Hibernate Tools 4.3.1
+// Generated 06/06/2023 09:26:01 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,7 +13,6 @@ public class Livros  implements java.io.Serializable {
 
      private Integer codLivro;
      private String nomeLivro;
-     private short quantidade;
      private float preco;
      private String isbn;
      private int exemplar;
@@ -21,22 +20,22 @@ public class Livros  implements java.io.Serializable {
      private String edicao;
      private String ano;
      private String autor;
+     private String proprietario;
      private Set vendas = new HashSet(0);
 
     public Livros() {
     }
 
 	
-    public Livros(String nomeLivro, short quantidade, float preco, String isbn, int exemplar) {
+    public Livros(String nomeLivro, float preco, String isbn, int exemplar, String proprietario) {
         this.nomeLivro = nomeLivro;
-        this.quantidade = quantidade;
         this.preco = preco;
         this.isbn = isbn;
         this.exemplar = exemplar;
+        this.proprietario = proprietario;
     }
-    public Livros(String nomeLivro, short quantidade, float preco, String isbn, int exemplar, String genero, String edicao, String ano, String autor, Set vendas) {
+    public Livros(String nomeLivro, float preco, String isbn, int exemplar, String genero, String edicao, String ano, String autor, String proprietario, Set vendas) {
        this.nomeLivro = nomeLivro;
-       this.quantidade = quantidade;
        this.preco = preco;
        this.isbn = isbn;
        this.exemplar = exemplar;
@@ -44,6 +43,7 @@ public class Livros  implements java.io.Serializable {
        this.edicao = edicao;
        this.ano = ano;
        this.autor = autor;
+       this.proprietario = proprietario;
        this.vendas = vendas;
     }
    
@@ -60,13 +60,6 @@ public class Livros  implements java.io.Serializable {
     
     public void setNomeLivro(String nomeLivro) {
         this.nomeLivro = nomeLivro;
-    }
-    public short getQuantidade() {
-        return this.quantidade;
-    }
-    
-    public void setQuantidade(short quantidade) {
-        this.quantidade = quantidade;
     }
     public float getPreco() {
         return this.preco;
@@ -116,6 +109,13 @@ public class Livros  implements java.io.Serializable {
     
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+    public String getProprietario() {
+        return this.proprietario;
+    }
+    
+    public void setProprietario(String proprietario) {
+        this.proprietario = proprietario;
     }
     public Set getVendas() {
         return this.vendas;

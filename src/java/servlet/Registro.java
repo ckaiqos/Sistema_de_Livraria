@@ -91,6 +91,9 @@ public class Registro extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        request.setCharacterEncoding("UTF-8");
+        
         String erroRegistro = "";  
         String resp = "registro.jsp";
         Endereco endereco = new Endereco();    
