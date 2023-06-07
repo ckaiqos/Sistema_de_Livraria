@@ -137,6 +137,10 @@ public class Fornecimento extends HttpServlet {
              livro.setProprietario(proprietario);
              con.salvarLivro(livro);
                           }
+         resp = "fornecimento.jsp";
+         String sucesso = "Você registrou o(s) livro(s) com sucesso!";
+         request.getSession().setAttribute("sucessoRegistroLivro", sucesso);
+         response.sendRedirect(resp);
          
          /*livro.setNomeLivro(nome);
          livro.setAutor(autor);

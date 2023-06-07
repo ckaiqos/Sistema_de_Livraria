@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+
+
 <%
     String erroRegistro = session.getAttribute("erroRegistro") != null? (String) session.getAttribute("erroRegistro"): null;
     String sucessoRegistro = session.getAttribute("sucessoRegistro") != null? (String) session.getAttribute("sucessoRegistro"): null;

@@ -14,5 +14,11 @@
     </head>
     <body>
         <h1>BELLES | LETRES</h1>
+        
+        <div align="left">
+           <a href="abastecimento.jsp">Comprar livros</a>
+           &nbsp;
+           <a href="index.jsp">Sair</a>
+        
     </body>
 </html>

@@ -7,6 +7,7 @@
 <%
     Fornecedor fornecedorLogado = session.getAttribute("fornecedorLogado") != null? (Fornecedor) session.getAttribute("fornecedorLogado"): new Fornecedor();
     Conta contaLogada = session.getAttribute("contaLogada") != null? (Conta) session.getAttribute("contaLogada"): new Conta();
+    String statusRegistro = session.getAttribute("sucessoRegistroLivro") != null? (String) session.getAttribute("sucessoRegistroLivro"): "";
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -101,8 +102,24 @@
                     </tbody>
                 </table>
         </form>
-        
+        <p id = "status"> </p>
         <script>
+            
+            <%if(!statusRegistro.isEmpty()){%> 
+                    console.log("<%=statusRegistro%>");
+                    document.getElementById("status").innerHTML = "<%=statusRegistro%> ";
+                    var a = document.createElement('a');
+                    var linkText = document.createTextNode("Clique aqui para voltar à tela de fornecedor.");
+                    a.appendChild(linkText);
+                    a.href = "telaFornecedor.jsp";
+                    $(a).attr("id", "link");
+                    $(a).attr("text-decoration", "underline");
+                    a.style.color = "green";
+                    document.getElementById("status").appendChild(a);
+                    document.getElementById("status").style.color = "green";
+                    <%session.invalidate();%>
+             <%}%>
+
             
             function mascaraISBN(evt){ 
             var i = 0;
