@@ -26,6 +26,7 @@ public class Cadastro {
             Transaction tr= ses.beginTransaction();
             ses.saveOrUpdate(obj);
             tr.commit();
+            ses.close();
             
                                   }
     
@@ -34,6 +35,7 @@ public class Cadastro {
         Transaction tr= ses.beginTransaction();
         if (obj != null){ses.delete(obj);}
         tr.commit();
+        ses.close();
                                   }
     
     public Livros getLivro(int id){

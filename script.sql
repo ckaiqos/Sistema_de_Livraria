@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS livraria;
 CREATE DATABASE livraria;
 USE livraria;
 
@@ -38,3 +39,27 @@ INSERT INTO Conta VALUES (1, "root", "63a9f0ea7bb98050796b649e85481845", 1); -- 
 INSERT INTO Conta VALUES (2, "Livrostop", "63776d3025a03bfbd84ffa5cb95b2ef1", 2); -- senha topperson 
 
 INSERT INTO Conta VALUES (3, "Jonasvildo", "b4d30f584bac853f3a4de309d346d16a", 3); -- senha Vildojonas942
+
+INSERT INTO Conta VALUES (4, "Forn44", "d790478fdedbb23b6d34d7c46d0103f0", 2);  
+
+INSERT INTO Telefone VALUES (1, "44444444444");
+
+INSERT INTO Endereco VALUES (1, "CDHU 4", "Rua Torso", "44", "44444444", "Quatroquatro", "AC");
+
+INSERT INTO Fornecedor VALUES (1, "Fornecedor44", "44444444444444", 1, 1, 4); -- senha 734fZ8K3A%qAe4%d
+
+INSERT INTO Livros VALUES (1, "A homeostase dos organismos", 68.3, "7777777777777", 1, "Ciências Biológicas", "3", "1998", "João Ramaglio", "Fornecedor44");
+
+INSERT INTO Livros VALUES (2, "A homeostase dos organismos", 68.3, "7777777777777", 2, "Ciências Biológicas", "3", "1998", "João Ramaglio", "Fornecedor44");
+
+INSERT INTO Livros VALUES (3, "A homeostase dos organismos", 68.3, "7777777777777", 3, "Ciências Biológicas", "3", "1998", "João Ramaglio", "Fornecedor44");
+
+INSERT INTO Livros VALUES (4, "A homeostase dos organismos", 68.3, "7777777777777", 4, "Ciências Biológicas", "3", "1998", "João Ramaglio", "Fornecedor44");
+
+INSERT INTO Livros VALUES (5, "A homeostase dos organismos", 68.3, "7777777777777", 5, "Ciências Biológicas", "3", "1998", "João Ramaglio", "Fornecedor44");
+
+INSERT INTO Livros VALUES (6, "A arte dos testes", 50.52, "1111111111111", 1, "Ciências Exatas", "2", "2009", "João Ramaglio", "Fornecedor44");
+
+INSERT INTO Livros VALUES (7, "A arte dos testes", 50.52, "1111111111111", 2, "Ciências Exatas", "2", "2009", "João Ramaglio", "Fornecedor44");
+
+INSERT INTO Livros VALUES (8, "A arte dos testes", 50.52, "1111111111111", 3, "Ciências Exatas", "2", "2009", "João Ramaglio", "Fornecedor44");

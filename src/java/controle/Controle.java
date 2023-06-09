@@ -15,12 +15,15 @@ import entidades.*;
 public class Controle {
     
     private Cadastro cad = new Cadastro(); 
+    private Consulta consul = new Consulta();
     
     public void salvarLivro(Livros livro){
           cad.salvar(livro);
     }
     
     public List consultarLivros(){return cad.consultaTodos(Livros.class);}
+    
+    public List consultarLivrosEspecial(){return consul.consultaTodos(Livros.class);}
     
      public void salvarTelefone(Telefone telefone){
           cad.salvar(telefone);
