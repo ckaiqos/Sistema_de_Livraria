@@ -44,17 +44,17 @@ public class Abastecimento extends HttpServlet {
         Integer i = 0;
         Integer qntDesej = request.getSession().getAttribute("qntDesej") != null? (Integer) request.getSession().getAttribute("qntDesej"): 1;     
         String pedido = request.getParameter("pedido");  
-        List listaLivros = con.consultarLivrosEspecial();      
+        List<Livros> listaLivros = con.consultarLivrosEspecial();      
         Iterator<Livros> ite = listaLivros.iterator();
         
         while(ite.hasNext()){  
             if(i == qntDesej){break;}
-            
-            if(ite.next().getIsbn().equals(pedido) && !ite.next().getProprietario().equals("Belles Letres")){      
-                livro = ite.next();   
+            livro = listaLivros.get(i);
+            if(livro.getIsbn().equals(pedido) && !livro.getProprietario().equals("Belles Letres")){      
+                
                 livro.setProprietario("Belles Letres");     
                 i++; 
-                //con.salvarLivro(livro);
+                con.salvarLivro(livro);
                 
                                                                                                             }
                             }     

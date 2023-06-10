@@ -75,7 +75,8 @@
               List listaLivrosISBN = con.consultarLivros();
               Iterator<Livros> itel = listaLivrosISBN.iterator();
               while(itel.hasNext()){   
-                  if(itel.next().getIsbn().equals(livro.getIsbn())){qntExemplar++;}
+                  Livros livrocomparar = itel.next();
+                  if(livrocomparar.getIsbn().equals(livro.getIsbn()) && !livrocomparar.getProprietario().equals("Belles Letres")){qntExemplar++;}
                                    }
 
               String precos = String.valueOf(livro.getPreco());
