@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/06/2023 02:55:46 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Fornecedor" table="Fornecedor" catalog="labengsoft" optimistic-lock="version">
+        <id name="codFornecedor" type="java.lang.Integer">
+            <column name="codFornecedor" />
+            <generator class="identity" />
+        </id>
+        <property name="nomeFornecedor" type="string">
+            <column name="nomeFornecedor" length="200" />
+        </property>
+        <property name="cnpj" type="string">
+            <column name="CNPJ" length="14" />
+        </property>
+        <property name="bairro" type="string">
+            <column name="bairro" length="200" not-null="true" />
+        </property>
+        <property name="logradouro" type="string">
+            <column name="logradouro" length="200" not-null="true" />
+        </property>
+        <property name="numero" type="string">
+            <column name="numero" length="9" />
+        </property>
+        <property name="cep" type="string">
+            <column name="CEP" length="8" />
+        </property>
+        <property name="cidade" type="string">
+            <column name="Cidade" length="100" />
+        </property>
+        <property name="uf" type="string">
+            <column name="UF" length="2" />
+        </property>
+        <property name="numTelefone" type="string">
+            <column name="numTelefone" length="11" />
+        </property>
+        <property name="login" type="string">
+            <column name="login" length="80" />
+        </property>
+        <property name="senha" type="string">
+            <column name="senha" length="32" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/06/2023 02:55:46 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Livros" table="Livros" catalog="labengsoft" optimistic-lock="version">
+        <id name="codLivro" type="java.lang.Integer">
+            <column name="codLivro" />
+            <generator class="identity" />
+        </id>
+        <property name="nomeLivro" type="string">
+            <column name="nomeLivro" length="200" not-null="true" />
+        </property>
+        <property name="preco" type="float">
+            <column name="preco" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="isbn" type="string">
+            <column name="isbn" length="13" not-null="true" />
+        </property>
+        <property name="exemplar" type="int">
+            <column name="exemplar" not-null="true" />
+        </property>
+        <property name="genero" type="string">
+            <column name="genero" length="80" />
+        </property>
+        <property name="edicao" type="string">
+            <column name="edicao" length="80" />
+        </property>
+        <property name="ano" type="string">
+            <column name="ano" length="4" />
+        </property>
+        <property name="autor" type="string">
+            <column name="autor" length="80" />
+        </property>
+        <property name="proprietario" type="string">
+            <column name="proprietario" length="200" not-null="true" />
+        </property>
+        <set name="vendas" table="venda" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codLivro" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Venda" />
+        </set>
+    </class>
+</hibernate-mapping>

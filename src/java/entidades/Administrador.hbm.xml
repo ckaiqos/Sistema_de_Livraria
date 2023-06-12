@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/06/2023 02:55:46 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Administrador" table="Administrador" catalog="labengsoft" optimistic-lock="version">
+        <id name="codAdministrador" type="java.lang.Integer">
+            <column name="codAdministrador" />
+            <generator class="identity" />
+        </id>
+        <property name="nomeAdministrador" type="string">
+            <column name="nomeAdministrador" length="200" />
+        </property>
+        <property name="login" type="string">
+            <column name="login" length="80" />
+        </property>
+        <property name="senha" type="string">
+            <column name="senha" length="32" />
+        </property>
+    </class>
+</hibernate-mapping>

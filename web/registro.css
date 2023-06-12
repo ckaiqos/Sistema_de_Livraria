@@ -1,0 +1,64 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12/05/2023, 09:42:56
+    Author     : windows
+*/
+
+h1{
+          top: -20px;
+          color: #FFEA00;
+          font-size: 40px;
+          align-self: center;
+          font-family: "Garamond", serif;
+          
+            
+      }
+      
+      #tr14botao{position: relative;  
+            right: -38em  
+            }
+            
+       input[type="text"],
+      input[type="password"] {
+        background-color: #B0B0B0;
+        color: #FFEA00;
+        padding: 2px;
+        border-radius: 5px;
+        border: 1px solid black;
+        margin-bottom: 10px;
+
+      }
+      
+      #status{align-self: center;
+            position: relative;  
+            top: 2em;
+      font-size:18px;}
+      
+      body {
+        display: flex;
+        flex-direction: column; 
+        background-color: #202020;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: 100vh;
+        
+      }
+      
+ 
+#link:hover {
+  color: purple;
+}
+
+
+      
+      .container > div {}
+      
+      .txt{color: #FFEA00;}
+      
+      
+      
+      

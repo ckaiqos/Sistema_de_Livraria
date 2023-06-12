@@ -1,0 +1,36 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07/06/2023, 08:12:51
+    Author     : windows
+*/
+
+body {
+        display: flex;
+        flex-direction: column; 
+        color: #FFEA00;
+        background-color: #202020;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: 100vh;
+        
+      }
+      
+      h1{
+          top: -20px;
+          color: #FFEA00;
+          font-size: 40px;
+          align-self: center;
+          font-family: "Garamond", serif;
+          
+            
+      }
+      
+      .txt{color: #FFEA00;}
+      
+      a { color: #FFEA00;
+  
+}

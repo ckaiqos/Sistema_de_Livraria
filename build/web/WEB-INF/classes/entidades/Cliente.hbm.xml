@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10/06/2023 02:55:46 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Cliente" table="Cliente" catalog="labengsoft" optimistic-lock="version">
+        <id name="codCliente" type="java.lang.Integer">
+            <column name="codCliente" />
+            <generator class="identity" />
+        </id>
+        <property name="nomeCliente" type="string">
+            <column name="nomeCliente" length="200" />
+        </property>
+        <property name="cpf" type="string">
+            <column name="CPF" length="11" />
+        </property>
+        <property name="bairro" type="string">
+            <column name="bairro" length="200" not-null="true" />
+        </property>
+        <property name="logradouro" type="string">
+            <column name="logradouro" length="200" not-null="true" />
+        </property>
+        <property name="numero" type="string">
+            <column name="numero" length="9" />
+        </property>
+        <property name="cep" type="string">
+            <column name="CEP" length="8" />
+        </property>
+        <property name="cidade" type="string">
+            <column name="Cidade" length="100" />
+        </property>
+        <property name="uf" type="string">
+            <column name="UF" length="2" />
+        </property>
+        <property name="numTelefone" type="string">
+            <column name="numTelefone" length="11" />
+        </property>
+        <property name="login" type="string">
+            <column name="login" length="80" />
+        </property>
+        <property name="senha" type="string">
+            <column name="senha" length="32" />
+        </property>
+        <set name="vendas" table="Venda" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codCliente" not-null="true" />
+            </key>
+            <one-to-many class="entidades.Venda" />
+        </set>
+    </class>
+</hibernate-mapping>
