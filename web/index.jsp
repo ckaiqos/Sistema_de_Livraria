@@ -23,51 +23,61 @@
         <h1>BELLES | LETRES</h1>
         
         <div class = "menu">
+            <div class = "ptCima"> 
             <form id="formLogin" action="Login" method="POST">
-            <table border = 0>
+             
+             
+             <p id = "txtLogin">Login:     </p>
+             <input type="text" name="login" id = "inputLogin"/>
+             
+             <br><br><br>
+             
+             <p id="txtPass">Senha: </p>
+             <input type="password" name="senha" id = "inputPass"/>
+            
                 
-            <tr id="idLogin"> 
-             <td id = "txtLogin">Login:     </td>
-             <td id = "inputLogin" ><input type="text" name="login"/></td>
-            </tr> 
+            </div>
             
-            </table>   
-            <table>
-                <br><br><br><br><br>
-            <tr id="idSenha"> 
-             <td id="txtPass">Senha: </td>
-             <td id = "inputPass"><input type="password" name="senha"/></td>
-            </tr> 
-            </table>
-            <br>
             
-            <tr>
-            <button type="submit" id="btnEntrar">Entrar</button>
-            </tr>
+            <div class = "ptBaixo">    
             
+            
+            
+            
+                
             <!--<a id="btnRegistro" href="registro.jsp" class="button">Cadastro</a>-->
 
             
-            <p id = "erro">Erro de entrada! Seu login ou senha estão incorretos. </p>
+            
             
             </form>
+            <br><br>
+     
+            <form action="registro.jsp" id = "formRegistro"><input id ="btnRegistro" type="submit" value="Cadastro"/> </form>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit" id="btnEntrar" form = "formLogin">Entrar</button>   
+            </div>   
+            <p id = "erro">Erro de entrada! Seu login ou senha estão incorretos. </p>
+            </div>
             
-            <form action="registro.jsp"><input id ="btnRegistro" type="submit" value="Cadastro"/> </form>
-            
-             <script>
+           <!-- <button type="submit" id="btnEntrar" form = "formLogin">Entrar</button>    
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <form action="registro.jsp" id = "formRegistro"><input id ="btnRegistro" type="submit" value="Cadastro"/> </form>
+            </div>   
+            <p id = "erro">Erro de entrada! Seu login ou senha estão incorretos. </p>
+            </div> -->
+              <script>
                     document.getElementById("erro").style.color = "red";
-                    document.getElementById("erro").style.visibility = "hidden";
+                    document.getElementById("erro").style.display = "none";
                                   
                                   
                  <%if(erroLogin == true){%>              
-                    document.getElementById("erro").style.visibility = "visible";
+                    document.getElementById("erro").style.display = "block";
                     <%session.invalidate();%>
      <%}%>
                                                     
                                   
-            </script> 
-            
-        </div>
+            </script>
     </body>
 </html>
         
