@@ -1,5 +1,5 @@
 package entidades;
-// Generated 07/06/2023 19:57:28 by Hibernate Tools 4.3.1
+// Generated 06/07/2023 10:29:18 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,6 +12,7 @@ public class Livros  implements java.io.Serializable {
 
 
      private Integer codLivro;
+     private Imgslivros imgslivros;
      private String nomeLivro;
      private float preco;
      private String isbn;
@@ -34,7 +35,8 @@ public class Livros  implements java.io.Serializable {
         this.exemplar = exemplar;
         this.proprietario = proprietario;
     }
-    public Livros(String nomeLivro, float preco, String isbn, int exemplar, String genero, String edicao, String ano, String autor, String proprietario, Set vendas) {
+    public Livros(Imgslivros imgslivros, String nomeLivro, float preco, String isbn, int exemplar, String genero, String edicao, String ano, String autor, String proprietario, Set vendas) {
+       this.imgslivros = imgslivros;
        this.nomeLivro = nomeLivro;
        this.preco = preco;
        this.isbn = isbn;
@@ -53,6 +55,13 @@ public class Livros  implements java.io.Serializable {
     
     public void setCodLivro(Integer codLivro) {
         this.codLivro = codLivro;
+    }
+    public Imgslivros getImgslivros() {
+        return this.imgslivros;
+    }
+    
+    public void setImgslivros(Imgslivros imgslivros) {
+        this.imgslivros = imgslivros;
     }
     public String getNomeLivro() {
         return this.nomeLivro;

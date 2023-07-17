@@ -48,6 +48,14 @@
         <servlet-name>Abastecimento</servlet-name>
         <url-pattern>/Abastecimento</url-pattern>
     </servlet-mapping>
+    
+    <context-param> 
+   <param-name>file-upload</param-name> 
+   <param-value>
+      C:\Users\windows\Documents\NetBeansProjects\Sistema de Livraria\imgs
+   </param-value> 
+   </context-param>
+    
     <session-config>
         <session-timeout>
             30

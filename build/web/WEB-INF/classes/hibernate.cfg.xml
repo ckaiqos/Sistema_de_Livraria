@@ -45,14 +45,15 @@ Contributor(s):
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/livraria?zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;allowPublicKeyRetrieval=true</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">root</property> 
+    <property name="hibernate.connection.password">root</property>
+    <mapping resource="entidades/Cliente.hbm.xml"/>
+    <mapping resource="entidades/Venda.hbm.xml"/>
     <mapping resource="entidades/Livros.hbm.xml"/>
-    <mapping resource="entidades/Fornecedor.hbm.xml"/>
+    <mapping resource="entidades/Conta.hbm.xml"/>
     <mapping resource="entidades/Endereco.hbm.xml"/>
     <mapping resource="entidades/Acesso.hbm.xml"/>
-    <mapping resource="entidades/Cliente.hbm.xml"/>
     <mapping resource="entidades/Telefone.hbm.xml"/>
-    <mapping resource="entidades/Venda.hbm.xml"/>
-    <mapping resource="entidades/Conta.hbm.xml"/>
+    <mapping resource="entidades/Fornecedor.hbm.xml"/>
+    <mapping resource="entidades/Imgslivros.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

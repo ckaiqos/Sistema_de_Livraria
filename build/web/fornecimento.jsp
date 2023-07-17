@@ -23,7 +23,7 @@
     <body>
         <h1>BELLES | LETRES</h1>
         
-        <form id="formCadastro" action="Fornecimento" method="POST">
+        <form id="formCadastro" action="Fornecimento" method="POST" enctype = "multipart/form-data">
                 <table border = 0>
                     <tbody id = "tbody"> 
                         
@@ -34,7 +34,7 @@
                         
                         <tr id="tr2">
                             <td style="color: rgb(255, 234, 0); visibility: visible;" id="txtQnt" class="txt">Quantidade disponível: </td>
-                            <td><input type="number" min="1" name="qntDisp" id="qntDisp" class="input" style="visibility: visible;"></td>
+                            <td><input type="number" min="1" onchange="ajaxQuantia()" name="qntDisp" id="qntDisp" class="input" style="visibility: visible;"></td>
                         </tr>
                         
                         <tr id="tr3">
@@ -96,14 +96,38 @@
                         </tr>
                         
                         <tr id = "tr9">
+                        <td style="color: rgb(255, 234, 0); visibility: visible;" id="txtAno" class="txt">Imagem: </td>
+                        <td><label for="file" id ="btnFileCustom">
+                        Escolher arquivo
+                            </label></td>
+                        <td id ="inputImg" class = "input"><input type = "file" id = "file" name = "file" onchange="apertado()"/> 
+                        <label id = "labelArquivo" style="color: rgb(255, 234, 0)">Campo opcional!</label></td>   
+                        </tr>
+                    <td><br></td>
+                        <tr id = "tr10">
                         <td id = "inputCadastrar" class = "input"><button type="submit" id="btnCadastrar">Cadastrar</button></td>    
                         </tr>
+                        
+                        
                         
                     </tbody>
                 </table>
         </form>
         <p id = "status"> </p>
         <script>
+            function ajaxQuantia(){ 
+            $.post("ajaxQuantia", {qntDesej: $("#qntDisp").value}, function(){console.log("Sucesso");});                      
+                                  }
+            function apertado(){ 
+                var file = document.getElementById('file');
+                if (file.value != ""){  
+                    var theSplit = file.value.split('\\');
+                    labelArquivo.innerHTML = "Arquivo escolhido: " + theSplit[theSplit.length-1];
+                                     }
+                
+                
+                               }
+            
             
             <%if(!statusRegistro.isEmpty()){%> 
                     console.log("<%=statusRegistro%>");

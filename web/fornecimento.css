@@ -27,3 +27,25 @@ body {
           
             
       }
+      
+      input[type=text], input[type=number]{background-color: #B0B0B0;
+        color: #FFEA00;
+        padding: 2px;
+        border-radius: 5px;
+        border: 1px solid black;
+        margin-bottom: 10px;}
+      
+      input[type=file]{display: none;}
+      
+      #labelArquivo{position: relative; 
+                    right: 12x;}
+      
+      button, #btnFileCustom
+      {background-color: black;
+        display: inline-block;
+        color: #FFEA00;
+        font: "Times New Roman";
+        padding: 10px 28px;
+        cursor: pointer;
+        border-radius: 6px;
+        text-align: center;}

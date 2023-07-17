@@ -61,4 +61,6 @@ public class Controle {
           cad.salvar(conta);
     }
     
+    public void salvarImg(Imgslivros img){cad.salvar(img);}
+    
 }

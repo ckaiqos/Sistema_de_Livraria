@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06/07/2023 10:29:19 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Imgslivros" table="Imgslivros" catalog="livraria" optimistic-lock="version">
+        <id name="codImg" type="java.lang.Integer">
+            <column name="codImg" />
+            <generator class="identity" />
+        </id>
+        <property name="imgNomTxt" type="string">
+            <column name="imgNomTxt" length="200" />
+        </property>
+        <property name="imgPathTxt" type="string">
+            <column name="imgPathTxt" length="200" />
+        </property>
+        <property name="imgFile" type="binary">
+            <column name="imgFile" />
+        </property>
+        <set name="livroses" table="Livros" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="imgLivro" />
+            </key>
+            <one-to-many class="entidades.Livros" />
+        </set>
+    </class>
+</hibernate-mapping>
